@@ -1,0 +1,8 @@
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\Main_window.ui -o C:\Users\Hitar\source\Family_tree\Main_window.py
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\My_card.ui -o C:\Users\Hitar\source\Family_tree\My_card.py
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\Add_edit.ui -o C:\Users\Hitar\source\Family_tree\Add_edit.py
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\Family_ties.ui -o C:\Users\Hitar\source\Family_tree\Family_ties.py
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\AddSelect_clan.ui -o C:\Users\Hitar\source\Family_tree\AddSelect_clan.py
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyuic5.exe -x C:\Users\Hitar\source\Family_tree\Review.ui -o C:\Users\Hitar\source\Family_tree\Review.py
+
+C:\Users\Hitar\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\Scripts.\pyrcc5.exe C:\Users\Hitar\source\Family_tree\Resource.qrc -o C:\Users\Hitar\source\Family_tree\Resource_rc.py

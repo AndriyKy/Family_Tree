@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Review</class>
+ <widget class="QDialog" name="Review">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>861</width>
+    <height>531</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Перегляд списку роду</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Icons/Review.ico</normaloff>Icons/Review.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(32, 33, 37);
+</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="main_frame">
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>400</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <widget class="QFrame" name="frame_top">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_choiceClan">
+           <property name="font">
+            <font>
+             <family>Segoe Print</family>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>Оберіть рід:</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::AutoText</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_choiceClan">
+           <property name="minimumSize">
+            <size>
+             <width>222</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>222</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Monotype Corsiva</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(21, 22, 26, 255);
+color: rgb(190, 190, 190);
+border-radius: 10px;
+border-bottom: 2px solid rgb(80, 80, 85, 255);
+border-right: 2px solid rgb(80, 80, 85, 255);
+border-top: 2px solid rgb(80, 80, 85, 255);
+border-left: 2px solid rgb(80, 80, 85, 255);
+selection-background-color: white;
+selection-color: rgba(21, 22, 26, 255);
+</string>
+           </property>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>surname1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>surname2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(21, 22, 26, 255);
+color: rgb(190, 190, 190);
+gridline-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>200</number>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>Стать</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ім'я</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Прізвище</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ім'я по батькові</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Місце народження</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Місце смерті</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Рік народження</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Рік смерті</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Додаткова інформація</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe Print</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="foreground">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>21</red>
+            <green>22</green>
+            <blue>26</blue>
+           </color>
+          </brush>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="5">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="0" column="7">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QPushButton" name="pushButton_done">
+        <property name="minimumSize">
+         <size>
+          <width>135</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>135</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe Print</family>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	text-align: center;
+	background-color: rgb(80, 80, 85);
+	border-bottom: 2px solid rgba(70, 70, 70, 150);
+	border-radius: 8px;
+	padding: 5px;
+	color: rgb(32, 33, 37);
+}
+
+QPushButton:hover {
+	background-color: #00c580;
+	color: white;
+	border: none;
+	float: right;
+	padding: 5px;
+	border-bottom: 2px solid rgba(38, 127, 51, 130);
+}
+
+QPushButton:pressed {
+	background-color: rgb(0, 136, 86);
+}</string>
+        </property>
+        <property name="text">
+         <string>Ок</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

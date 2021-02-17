@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Icons/fileld_of_dots.png</file>
+    <file>Icons/Add_color_pressed.ico</file>
+    <file>Icons/Add_color.ico</file>
+    <file>Icons/Add.ico</file>
+    <file>Icons/family_tree.png</file>
+    <file>Icons/Add_image.png</file>
+  </qresource>
+</RCC>
