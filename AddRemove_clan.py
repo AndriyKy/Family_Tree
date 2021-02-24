@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Hitar\source\Family_tree\AddSelect_clan.ui'
+# Form implementation generated from reading ui file 'C:\Users\Hitar\source\Family_tree\AddRemove_clan.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -11,20 +11,20 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_AddSelectClan(object):
-    def setupUi(self, AddSelectClan):
-        AddSelectClan.setObjectName("AddSelectClan")
-        AddSelectClan.resize(470, 225)
-        AddSelectClan.setMinimumSize(QtCore.QSize(470, 225))
-        AddSelectClan.setMaximumSize(QtCore.QSize(470, 225))
+class Ui_AddRemoveClan(object):
+    def setupUi(self, AddRemoveClan):
+        AddRemoveClan.setObjectName("AddRemoveClan")
+        AddRemoveClan.resize(470, 225)
+        AddRemoveClan.setMinimumSize(QtCore.QSize(470, 225))
+        AddRemoveClan.setMaximumSize(QtCore.QSize(470, 225))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        AddSelectClan.setWindowIcon(icon)
-        AddSelectClan.setStyleSheet("background-color: rgb(32, 33, 37);")
-        AddSelectClan.setModal(True)
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(AddSelectClan)
+        AddRemoveClan.setWindowIcon(icon)
+        AddRemoveClan.setStyleSheet("background-color: rgb(32, 33, 37);")
+        AddRemoveClan.setModal(True)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(AddRemoveClan)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.main_frame = QtWidgets.QFrame(AddSelectClan)
+        self.main_frame = QtWidgets.QFrame(AddRemoveClan)
         self.main_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_frame.setObjectName("main_frame")
@@ -82,24 +82,24 @@ class Ui_AddSelectClan(object):
         self.label_or.setAlignment(QtCore.Qt.AlignCenter)
         self.label_or.setObjectName("label_or")
         self.verticalLayout.addWidget(self.label_or, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
-        self.label_choiceClan = QtWidgets.QLabel(self.frame_left)
+        self.label_removeClan = QtWidgets.QLabel(self.frame_left)
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(12)
-        self.label_choiceClan.setFont(font)
-        self.label_choiceClan.setStyleSheet("color: white;")
-        self.label_choiceClan.setTextFormat(QtCore.Qt.AutoText)
-        self.label_choiceClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
-        self.label_choiceClan.setObjectName("label_choiceClan")
-        self.verticalLayout.addWidget(self.label_choiceClan)
-        self.comboBox_choiceClan = QtWidgets.QComboBox(self.frame_left)
-        self.comboBox_choiceClan.setMinimumSize(QtCore.QSize(222, 30))
-        self.comboBox_choiceClan.setMaximumSize(QtCore.QSize(222, 30))
+        self.label_removeClan.setFont(font)
+        self.label_removeClan.setStyleSheet("color: white;")
+        self.label_removeClan.setTextFormat(QtCore.Qt.AutoText)
+        self.label_removeClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_removeClan.setObjectName("label_removeClan")
+        self.verticalLayout.addWidget(self.label_removeClan)
+        self.comboBox_choiceRemoveClan = QtWidgets.QComboBox(self.frame_left)
+        self.comboBox_choiceRemoveClan.setMinimumSize(QtCore.QSize(222, 30))
+        self.comboBox_choiceRemoveClan.setMaximumSize(QtCore.QSize(222, 30))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(14)
-        self.comboBox_choiceClan.setFont(font)
-        self.comboBox_choiceClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
+        self.comboBox_choiceRemoveClan.setFont(font)
+        self.comboBox_choiceRemoveClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
 "color: rgb(190, 190, 190);\n"
 "border-radius: 10px;\n"
 "border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
@@ -109,12 +109,10 @@ class Ui_AddSelectClan(object):
 "selection-background-color: white;\n"
 "selection-color:rgba(21, 22, 26, 255);\n"
 "")
-        self.comboBox_choiceClan.setObjectName("comboBox_choiceClan")
-        self.comboBox_choiceClan.addItem("")
-        self.comboBox_choiceClan.setItemText(0, "")
-        self.comboBox_choiceClan.addItem("")
-        self.comboBox_choiceClan.addItem("")
-        self.verticalLayout.addWidget(self.comboBox_choiceClan)
+        self.comboBox_choiceRemoveClan.setObjectName("comboBox_choiceRemoveClan")
+        self.comboBox_choiceRemoveClan.addItem("")
+        self.comboBox_choiceRemoveClan.setItemText(0, "")
+        self.verticalLayout.addWidget(self.comboBox_choiceRemoveClan)
         self.horizontalLayout_2.addWidget(self.frame_left)
         self.line = QtWidgets.QFrame(self.main_frame)
         self.line.setMinimumSize(QtCore.QSize(0, 160))
@@ -137,7 +135,7 @@ class Ui_AddSelectClan(object):
         self.label_note.setObjectName("label_note")
         self.horizontalLayout_2.addWidget(self.label_note, 0, QtCore.Qt.AlignVCenter)
         self.verticalLayout_2.addWidget(self.main_frame)
-        self.pushButton_done = QtWidgets.QPushButton(AddSelectClan)
+        self.pushButton_done = QtWidgets.QPushButton(AddRemoveClan)
         self.pushButton_done.setMinimumSize(QtCore.QSize(135, 35))
         self.pushButton_done.setMaximumSize(QtCore.QSize(135, 35))
         font = QtGui.QFont()
@@ -170,26 +168,24 @@ class Ui_AddSelectClan(object):
         self.pushButton_done.setObjectName("pushButton_done")
         self.verticalLayout_2.addWidget(self.pushButton_done, 0, QtCore.Qt.AlignHCenter)
 
-        self.retranslateUi(AddSelectClan)
-        QtCore.QMetaObject.connectSlotsByName(AddSelectClan)
+        self.retranslateUi(AddRemoveClan)
+        QtCore.QMetaObject.connectSlotsByName(AddRemoveClan)
 
-    def retranslateUi(self, AddSelectClan):
+    def retranslateUi(self, AddRemoveClan):
         _translate = QtCore.QCoreApplication.translate
-        AddSelectClan.setWindowTitle(_translate("AddSelectClan", "Додати/Обрати рід"))
-        self.label_addClan.setText(_translate("AddSelectClan", "<html><head/><body><p>Додати рід <span style=\" color:#fb4938;\">*</span></p></body></html>"))
-        self.label_or.setText(_translate("AddSelectClan", "або"))
-        self.label_choiceClan.setText(_translate("AddSelectClan", "Обрати рід"))
-        self.comboBox_choiceClan.setItemText(1, _translate("AddSelectClan", "surname1"))
-        self.comboBox_choiceClan.setItemText(2, _translate("AddSelectClan", "surname2"))
-        self.label_note.setText(_translate("AddSelectClan", "<html><head/><body><p><span style=\" color:#fb4938;\">* </span>Прізвище роду записується в родовому відмінку множини. Наприклад: Мельник - <span style=\" font-weight:600;\">Мельників</span></p></body></html>"))
-        self.pushButton_done.setText(_translate("AddSelectClan", "Готово"))
+        AddRemoveClan.setWindowTitle(_translate("AddRemoveClan", "Родини"))
+        self.label_addClan.setText(_translate("AddRemoveClan", "<html><head/><body><p>Додати рід <span style=\" color:#fb4938;\">*</span></p></body></html>"))
+        self.label_or.setText(_translate("AddRemoveClan", "або"))
+        self.label_removeClan.setText(_translate("AddRemoveClan", " Видалити рід"))
+        self.label_note.setText(_translate("AddRemoveClan", "<html><head/><body><p><span style=\" color:#fb4938;\">* </span>Прізвище роду записується в родовому відмінку множини. Наприклад: Мельник - <span style=\" font-weight:600;\">Мельників</span></p></body></html>"))
+        self.pushButton_done.setText(_translate("AddRemoveClan", "Готово"))
 
 
 # if __name__ == "__main__":
 #     import sys
 #     app = QtWidgets.QApplication(sys.argv)
-#     AddSelectClan = QtWidgets.QDialog()
-#     ui = Ui_AddSelectClan()
-#     ui.setupUi(AddSelectClan)
-#     AddSelectClan.show()
+#     AddRemoveClan = QtWidgets.QDialog()
+#     ui = Ui_AddRemoveClan()
+#     ui.setupUi(AddRemoveClan)
+#     AddRemoveClan.show()
 #     sys.exit(app.exec_())

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(915, 600)
+        MainWindow.resize(893, 600)
         MainWindow.setMinimumSize(QtCore.QSize(845, 600))
         MainWindow.showMaximized()
         icon = QtGui.QIcon()
@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon2)
         self.pushButton_2.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -134,7 +134,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon3)
         self.pushButton_3.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_3.setObjectName("pushButton_3")
@@ -165,7 +165,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_4.setIcon(icon4)
         self.pushButton_4.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_4.setObjectName("pushButton_4")
@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.label_logo = QtWidgets.QLabel(self.centralwidget)
         self.label_logo.setStyleSheet("")
         self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap(":/newPrefix/Icons/family_tree.png"))
+        self.label_logo.setPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/family_tree.png"))
         self.label_logo.setAlignment(QtCore.Qt.AlignCenter)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout.addWidget(self.label_logo)
@@ -250,9 +250,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Family Tree"))
         self.pushButton_1.setText(_translate("MainWindow", "Рід: прізвище роду\n"
 "Ім\'я Прізвище"))
-        self.pushButton_2.setText(_translate("MainWindow", "Додати/змінити "))
-        self.pushButton_3.setText(_translate("MainWindow", "Сімейні зв\'язки"))
-        self.pushButton_4.setText(_translate("MainWindow", "Вибрати рід"))
+        self.pushButton_2.setText(_translate("MainWindow", "Родини"))
+        self.pushButton_3.setText(_translate("MainWindow", "Додати/змінити "))
+        self.pushButton_4.setText(_translate("MainWindow", "Сімейні зв\'язки"))
         self.pushButton_5.setText(_translate("MainWindow", "Переглянути "))
         self.pushButton_6.setText(_translate("MainWindow", "Діаграма"))
 

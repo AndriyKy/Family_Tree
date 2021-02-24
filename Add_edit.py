@@ -45,17 +45,16 @@ class Ui_AddEdit(object):
         self.label_choiceClan.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
-        font.setPointSize(14)
+        font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
         self.label_choiceClan.setFont(font)
         self.label_choiceClan.setStyleSheet("color: white;")
-        self.label_choiceClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_choiceClan.setObjectName("label_choiceClan")
-        self.horizontalLayout_6.addWidget(self.label_choiceClan, 0, QtCore.Qt.AlignRight)
+        self.horizontalLayout_6.addWidget(self.label_choiceClan, 0, QtCore.Qt.AlignVCenter)
         self.comboBox_choiceClan = QtWidgets.QComboBox(self.frame_addSelClan)
-        self.comboBox_choiceClan.setMinimumSize(QtCore.QSize(222, 30))
-        self.comboBox_choiceClan.setMaximumSize(QtCore.QSize(222, 30))
+        self.comboBox_choiceClan.setMinimumSize(QtCore.QSize(222, 31))
+        self.comboBox_choiceClan.setMaximumSize(QtCore.QSize(222, 31))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
@@ -72,62 +71,10 @@ class Ui_AddEdit(object):
 "selection-background-color: white;\n"
 "selection-color:rgba(21, 22, 26, 255);")
         self.comboBox_choiceClan.setObjectName("comboBox_choiceClan")
-        self.comboBox_choiceClan.addItem("")
-        self.comboBox_choiceClan.setItemText(0, "Прізвище_роду1")
         self.horizontalLayout_6.addWidget(self.comboBox_choiceClan)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(122, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem)
-        self.lineEdit_addClan = QtWidgets.QLineEdit(self.frame_addSelClan)
-        self.lineEdit_addClan.setMinimumSize(QtCore.QSize(222, 30))
-        self.lineEdit_addClan.setMaximumSize(QtCore.QSize(222, 30))
-        font = QtGui.QFont()
-        font.setFamily("Monotype Corsiva")
-        font.setPointSize(14)
-        self.lineEdit_addClan.setFont(font)
-        self.lineEdit_addClan.setMouseTracking(False)
-        self.lineEdit_addClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
-"color: rgb(190, 190, 190);\n"
-"border-radius: 10px;\n"
-"border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
-"border-right: 2px solid rgb(80, 80, 85, 255);\n"
-"border-top: 2px solid rgb(80, 80, 85, 255);\n"
-"border-left: 2px solid rgb(80, 80, 85, 255);")
-        self.lineEdit_addClan.setClearButtonEnabled(True)
-        self.lineEdit_addClan.setObjectName("lineEdit_addClan")
-        self.horizontalLayout_6.addWidget(self.lineEdit_addClan)
-        self.pushButton_addClan = QtWidgets.QPushButton(self.frame_addSelClan)
-        self.pushButton_addClan.setMinimumSize(QtCore.QSize(135, 30))
-        self.pushButton_addClan.setMaximumSize(QtCore.QSize(135, 30))
-        font = QtGui.QFont()
-        font.setFamily("Segoe Print")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setWeight(50)
-        self.pushButton_addClan.setFont(font)
-        self.pushButton_addClan.setStyleSheet("QPushButton {\n"
-"    text-align: center;\n"
-"    background-color: rgb(80, 80, 85);\n"
-"    border-bottom: 2px solid rgba(70, 70, 70, 150);\n"
-"    border-radius: 8px;\n"
-"    padding: 5px;\n"
-"    color: rgb(32, 33, 37);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #00c580;\n"
-"    color: white;\n"
-"    border: none;\n"
-"    float: right;\n"
-"    padding: 5px;\n"
-"    border-bottom: 2px solid rgba(38, 127, 51, 130);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(0, 136, 86);\n"
-"}")
-        self.pushButton_addClan.setObjectName("pushButton_addClan")
-        self.horizontalLayout_6.addWidget(self.pushButton_addClan)
-        self.verticalLayout_2.addWidget(self.frame_addSelClan, 0, QtCore.Qt.AlignRight)
+        self.verticalLayout_2.addWidget(self.frame_addSelClan, 0, QtCore.Qt.AlignHCenter)
         self.line_top_2 = QtWidgets.QFrame(self.main_frame)
         self.line_top_2.setStyleSheet("Line{\n"
 "    color: rgb(21, 22, 26);\n"
@@ -155,15 +102,15 @@ class Ui_AddEdit(object):
         self.label_addEdit.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_addEdit.setObjectName("label_addEdit")
         self.horizontalLayout_5.addWidget(self.label_addEdit, 0, QtCore.Qt.AlignLeft)
-        self.comboBox_addEditChoice = QtWidgets.QComboBox(self.frame_choice)
-        self.comboBox_addEditChoice.setMinimumSize(QtCore.QSize(480, 30))
+        self.comboBox_addEdit = QtWidgets.QComboBox(self.frame_choice)
+        self.comboBox_addEdit.setMinimumSize(QtCore.QSize(480, 30))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_addEditChoice.setFont(font)
-        self.comboBox_addEditChoice.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
+        self.comboBox_addEdit.setFont(font)
+        self.comboBox_addEdit.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
 "color: rgb(190, 190, 190);\n"
 "border-radius: 10px;\n"
 "border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
@@ -172,11 +119,10 @@ class Ui_AddEdit(object):
 "border-left: 2px solid rgb(80, 80, 85, 255);\n"
 "selection-background-color: white;\n"
 "selection-color:rgba(21, 22, 26, 255);")
-        self.comboBox_addEditChoice.setObjectName("comboBox_addEditChoice")
-        self.comboBox_addEditChoice.addItem("")
-        self.comboBox_addEditChoice.setItemText(0, "Додати")
-        self.comboBox_addEditChoice.addItem("")
-        self.horizontalLayout_5.addWidget(self.comboBox_addEditChoice, 0, QtCore.Qt.AlignRight)
+        self.comboBox_addEdit.setObjectName("comboBox_addEdit")
+        self.comboBox_addEdit.addItem("")
+        self.comboBox_addEdit.setItemText(0, "Додати")
+        self.horizontalLayout_5.addWidget(self.comboBox_addEdit, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_2.addWidget(self.frame_choice, 0, QtCore.Qt.AlignTop)
         self.frame_top = QtWidgets.QFrame(self.main_frame)
         self.frame_top.setMinimumSize(QtCore.QSize(0, 191))
@@ -609,10 +555,7 @@ class Ui_AddEdit(object):
         _translate = QtCore.QCoreApplication.translate
         AddEdit.setWindowTitle(_translate("AddEdit", "Додати/змінити"))
         self.label_choiceClan.setText(_translate("AddEdit", "Рід:"))
-        self.lineEdit_addClan.setPlaceholderText(_translate("AddEdit", "В род. відм. множини"))
-        self.pushButton_addClan.setText(_translate("AddEdit", "Додати рід"))
         self.label_addEdit.setText(_translate("AddEdit", "Додати/змінити:"))
-        self.comboBox_addEditChoice.setItemText(1, _translate("AddEdit", "Андрій Креховецький, 2000 - 3000"))
         self.label_lname.setText(_translate("AddEdit", "<html><head/><body><p>    Прізвище <span style=\" color:#fb4938;\">*</span></p></body></html>"))
         self.label_note.setText(_translate("AddEdit", "<html><head/><body><p>Жіноче прізвище записується у форматі дівоче-чоловіче прізвище через дефіс. Дівоче прізвище обовязково йде першим </p><p><span style=\" color:#fd4837;\">*</span> Обов\'язкові поля</p></body></html>"))
         self.label_fname.setText(_translate("AddEdit", "<html><head/><body><p> Ім\'я <span style=\" color:#fb4938;\">*</span></p></body></html>"))

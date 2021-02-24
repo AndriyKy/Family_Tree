@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>915</width>
+    <width>893</width>
     <height>600</height>
    </rect>
   </property>
@@ -171,11 +171,11 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>Додати/змінити </string>
+          <string>Родини</string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/Edit.ico</normaloff>Icons/Edit.ico</iconset>
+           <normaloff>Icons/Select.ico</normaloff>Icons/Select.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -221,11 +221,11 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>Сімейні зв'язки</string>
+          <string>Додати/змінити </string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/Family.ico</normaloff>Icons/Family.ico</iconset>
+           <normaloff>Icons/Edit.ico</normaloff>Icons/Edit.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -271,11 +271,11 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>Вибрати рід</string>
+          <string>Сімейні зв'язки</string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>Icons/Select.ico</normaloff>Icons/Select.ico</iconset>
+           <normaloff>Icons/Family.ico</normaloff>Icons/Family.ico</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -397,7 +397,7 @@ QPushButton:pressed {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resource.qrc">:/newPrefix/Icons/family_tree.png</pixmap>
+       <pixmap>Icons/family_tree.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

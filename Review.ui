@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>861</width>
+    <width>837</width>
     <height>531</height>
    </rect>
   </property>
@@ -78,7 +78,7 @@
            <property name="font">
             <font>
              <family>Segoe Print</family>
-             <pointsize>12</pointsize>
+             <pointsize>15</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -87,7 +87,7 @@
             <string notr="true">color: white;</string>
            </property>
            <property name="text">
-            <string>Оберіть рід:</string>
+            <string>Рід</string>
            </property>
            <property name="textFormat">
             <enum>Qt::AutoText</enum>
@@ -129,21 +129,6 @@ selection-background-color: white;
 selection-color: rgba(21, 22, 26, 255);
 </string>
            </property>
-           <item>
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>surname1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>surname2</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>
@@ -169,11 +154,14 @@ selection-color: rgba(21, 22, 26, 255);
 color: rgb(190, 190, 190);
 gridline-color: rgb(255, 255, 255);</string>
         </property>
-        <property name="sortingEnabled">
-         <bool>true</bool>
+        <property name="verticalScrollMode">
+         <enum>QAbstractItemView::ScrollPerPixel</enum>
+        </property>
+        <property name="horizontalScrollMode">
+         <enum>QAbstractItemView::ScrollPerPixel</enum>
         </property>
         <property name="rowCount">
-         <number>2</number>
+         <number>0</number>
         </property>
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>true</bool>
@@ -181,14 +169,9 @@ gridline-color: rgb(255, 255, 255);</string>
         <attribute name="horizontalHeaderDefaultSectionSize">
          <number>200</number>
         </attribute>
-        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-         <bool>true</bool>
-        </attribute>
         <attribute name="verticalHeaderCascadingSectionResizes">
          <bool>true</bool>
         </attribute>
-        <row/>
-        <row/>
         <column>
          <property name="text">
           <string>Стать</string>
@@ -211,7 +194,7 @@ gridline-color: rgb(255, 255, 255);</string>
         </column>
         <column>
          <property name="text">
-          <string>Ім'я</string>
+          <string>Прізвище</string>
          </property>
          <property name="font">
           <font>
@@ -231,7 +214,7 @@ gridline-color: rgb(255, 255, 255);</string>
         </column>
         <column>
          <property name="text">
-          <string>Прізвище</string>
+          <string>Ім'я</string>
          </property>
          <property name="font">
           <font>
@@ -369,21 +352,6 @@ gridline-color: rgb(255, 255, 255);</string>
           </brush>
          </property>
         </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="5">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item row="0" column="7">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
