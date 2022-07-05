@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_AddRemoveClan(object):
     def setupUi(self, AddRemoveClan):
         AddRemoveClan.setObjectName("AddRemoveClan")
@@ -18,7 +17,7 @@ class Ui_AddRemoveClan(object):
         AddRemoveClan.setMinimumSize(QtCore.QSize(470, 225))
         AddRemoveClan.setMaximumSize(QtCore.QSize(470, 225))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         AddRemoveClan.setWindowIcon(icon)
         AddRemoveClan.setStyleSheet("background-color: rgb(32, 33, 37);")
         AddRemoveClan.setModal(True)

@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -18,7 +17,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(845, 600))
         MainWindow.showMaximized()
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/family_tree.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/family_tree.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0.682, y2:0.0340909, stop:0.465909 rgba(21, 22, 26, 255), stop:1 rgba(34, 35, 42, 255));\n"
@@ -72,7 +71,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Avatar.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Icons/Avatar.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_1.setIcon(icon1)
         self.pushButton_1.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_1.setObjectName("pushButton_1")
@@ -103,7 +102,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_2.setIcon(icon2)
         self.pushButton_2.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -134,7 +133,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon3)
         self.pushButton_3.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_3.setObjectName("pushButton_3")
@@ -165,7 +164,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap("Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_4.setIcon(icon4)
         self.pushButton_4.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_4.setObjectName("pushButton_4")
@@ -196,7 +195,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Review.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap("Icons/Review.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon5)
         self.pushButton_5.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_5.setObjectName("pushButton_5")
@@ -227,7 +226,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 136, 86);\n"
 "}")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Generate.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap("Icons/Generate.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_6.setIcon(icon6)
         self.pushButton_6.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_6.setObjectName("pushButton_6")
@@ -236,7 +235,7 @@ class Ui_MainWindow(object):
         self.label_logo = QtWidgets.QLabel(self.centralwidget)
         self.label_logo.setStyleSheet("")
         self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/family_tree.png"))
+        self.label_logo.setPixmap(QtGui.QPixmap("Icons/family_tree.png"))
         self.label_logo.setAlignment(QtCore.Qt.AlignCenter)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout.addWidget(self.label_logo)

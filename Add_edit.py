@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_AddEdit(object):
     def setupUi(self, AddEdit):
         AddEdit.setObjectName("AddEdit")
@@ -18,7 +17,7 @@ class Ui_AddEdit(object):
         AddEdit.setMinimumSize(QtCore.QSize(685, 650))
         AddEdit.setMaximumSize(QtCore.QSize(685, 650))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/Edit.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         AddEdit.setWindowIcon(icon)
         AddEdit.setStyleSheet("background-color: rgb(32, 33, 37);")
         AddEdit.setModal(True)
@@ -142,7 +141,7 @@ class Ui_AddEdit(object):
 "border-top: 2px solid rgb(80, 80, 85, 255);\n"
 "border-left: 2px solid rgb(80, 80, 85, 255);")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Add_image.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Icons/Add_image.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.image_Button.setIcon(icon1)
         self.image_Button.setIconSize(QtCore.QSize(175, 175))
         self.image_Button.setObjectName("image_Button")

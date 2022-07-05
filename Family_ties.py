@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_FamilyTies(object):
     def setupUi(self, FamilyTies):
         FamilyTies.setObjectName("FamilyTies")
@@ -18,7 +17,7 @@ class Ui_FamilyTies(object):
         FamilyTies.setMinimumSize(QtCore.QSize(875, 590))
         FamilyTies.setMaximumSize(QtCore.QSize(875, 590))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/Family.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         FamilyTies.setWindowIcon(icon)
         FamilyTies.setStyleSheet("background-color: rgb(32, 33, 37);")
         FamilyTies.setModal(True)

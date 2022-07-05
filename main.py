@@ -6,7 +6,7 @@ from tkinter import filedialog as fd
 from tkinter import Tk
 from tkinter import *
 from re import search
-import Resource_rc
+# import Resource_rc
 import sys 
 
 

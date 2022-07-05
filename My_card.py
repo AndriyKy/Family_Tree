@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MyCard(object):
     def setupUi(self, MyCard):
         MyCard.setObjectName("MyCard")
@@ -18,7 +17,7 @@ class Ui_MyCard(object):
         MyCard.setMinimumSize(QtCore.QSize(685, 570))
         MyCard.setMaximumSize(QtCore.QSize(685, 570))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Avatar.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/Avatar.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MyCard.setWindowIcon(icon)
         MyCard.setStyleSheet("background-color: rgb(32, 33, 37);")
         MyCard.setModal(True)
@@ -51,7 +50,7 @@ class Ui_MyCard(object):
 "border-top: 2px solid rgb(80, 80, 85, 255);\n"
 "border-left: 2px solid rgb(80, 80, 85, 255);")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Add_image.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Icons/Add_image.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.image_Button.setIcon(icon1)
         self.image_Button.setIconSize(QtCore.QSize(175, 175))
         self.image_Button.setObjectName("image_Button")

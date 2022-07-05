@@ -10,14 +10,13 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_Review(object):
     def setupUi(self, Review):
         Review.setObjectName("Review")
         Review.resize(837, 531)
         Review.setMinimumSize(QtCore.QSize(640, 400))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\Hitar\\source\\Family_tree\\Icons/Review.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Icons/Review.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Review.setWindowIcon(icon)
         Review.setStyleSheet("background-color: rgb(32, 33, 37);\n"
 "")
