@@ -518,11 +518,11 @@ class Ui_MyCard(object):
         self.pushButton_done.setText(_translate("MyCard", "Готово"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     MyCard = QtWidgets.QDialog()
-#     ui = Ui_MyCard()
-#     ui.setupUi(MyCard)
-#     MyCard.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MyCard = QtWidgets.QDialog()
+    ui = Ui_MyCard()
+    ui.setupUi(MyCard)
+    MyCard.show()
+    sys.exit(app.exec_())

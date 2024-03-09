@@ -180,11 +180,11 @@ class Ui_AddRemoveClan(object):
         self.pushButton_done.setText(_translate("AddRemoveClan", "Готово"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     AddRemoveClan = QtWidgets.QDialog()
-#     ui = Ui_AddRemoveClan()
-#     ui.setupUi(AddRemoveClan)
-#     AddRemoveClan.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    AddRemoveClan = QtWidgets.QDialog()
+    ui = Ui_AddRemoveClan()
+    ui.setupUi(AddRemoveClan)
+    AddRemoveClan.show()
+    sys.exit(app.exec_())

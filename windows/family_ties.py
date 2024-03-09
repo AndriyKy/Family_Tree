@@ -541,11 +541,11 @@ class Ui_FamilyTies(object):
         self.pushButton_done.setText(_translate("FamilyTies", "Готово"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     FamilyTies = QtWidgets.QDialog()
-#     ui = Ui_FamilyTies()
-#     ui.setupUi(FamilyTies)
-#     FamilyTies.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    FamilyTies = QtWidgets.QDialog()
+    ui = Ui_FamilyTies()
+    ui.setupUi(FamilyTies)
+    FamilyTies.show()
+    sys.exit(app.exec_())

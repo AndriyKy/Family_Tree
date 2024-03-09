@@ -570,11 +570,11 @@ class Ui_AddEdit(object):
         self.pushButton_done.setText(_translate("AddEdit", "Готово"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     AddEdit = QtWidgets.QDialog()
-#     ui = Ui_AddEdit()
-#     ui.setupUi(AddEdit)
-#     AddEdit.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    AddEdit = QtWidgets.QDialog()
+    ui = Ui_AddEdit()
+    ui.setupUi(AddEdit)
+    AddEdit.show()
+    sys.exit(app.exec_())

@@ -237,11 +237,11 @@ class Ui_Review(object):
         self.pushButton_done.setText(_translate("Review", "Ок"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     Review = QtWidgets.QDialog()
-#     ui = Ui_Review()
-#     ui.setupUi(Review)
-#     Review.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Review = QtWidgets.QDialog()
+    ui = Ui_Review()
+    ui.setupUi(Review)
+    Review.show()
+    sys.exit(app.exec_())
