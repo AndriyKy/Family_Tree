@@ -16,25 +16,19 @@ from windows import (
     Ui_Review,
 )
 
-## ==> CREATE MAIN APP
 app = QtWidgets.QApplication(sys.argv)
 
-## ==> CREATE FORM AND INIT UI
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
 ui.setupUi(MainWindow)
 MainWindow.show()
 
 
-## ==> LOGIC
-
-## Variables
 varMy_cardWindow = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 varAdd_editWindow = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 varFamily_tiesWindow = [1, 2, 3, 4, 5, 6]
 
 
-## Functions of the main window buttons
 def my_card_def():
     # Create form and init ui
     MyCard = QtWidgets.QDialog()
@@ -1164,7 +1158,7 @@ def resizeImage(clan_Name, cell):
     return (MAX_WIDTH, MAX_HEIGHT)
 
 
-## Set the lables in the My_card buttom
+# Set the lables in the My_card buttom
 def set_info_to_PB1():
     wb = load_workbook("Family_lists.xlsx")
     ws = wb[wb.sheetnames[0]]
@@ -1185,14 +1179,14 @@ def set_info_to_PB1():
     wb.close()
 
 
-## Condition of pressing buttons
+# Condition of pressing buttons
 ui.pushButton_1.clicked.connect(my_card_def)
 ui.pushButton_2.clicked.connect(addRemove_clan_def)
 ui.pushButton_3.clicked.connect(add_edit_def)
 ui.pushButton_4.clicked.connect(family_ties_def)
 ui.pushButton_5.clicked.connect(review_def)
 
-## Check for the entry into the program
+# Check for the entry into the program
 try:
     counter = open("counter.txt", "r")
     text_counter = counter.read()
@@ -1208,5 +1202,4 @@ finally:
     counter.close()
 
 
-## ==> RUN MAIN LOOP
-sys.exit(app.exec_())
+app.exec()
