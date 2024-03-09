@@ -10,16 +10,20 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Review(object):
     def setupUi(self, Review):
         Review.setObjectName("Review")
         Review.resize(837, 531)
         Review.setMinimumSize(QtCore.QSize(640, 400))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Icons/Review.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap("Icons/Review.ico"),
+            QtGui.QIcon.Normal,
+            QtGui.QIcon.Off,
+        )
         Review.setWindowIcon(icon)
-        Review.setStyleSheet("background-color: rgb(32, 33, 37);\n"
-"")
+        Review.setStyleSheet("background-color: rgb(32, 33, 37);\n" "")
         Review.setModal(True)
         self.verticalLayout = QtWidgets.QVBoxLayout(Review)
         self.verticalLayout.setContentsMargins(-1, 0, -1, 0)
@@ -49,7 +53,11 @@ class Ui_Review(object):
         self.label_choiceClan.setFont(font)
         self.label_choiceClan.setStyleSheet("color: white;")
         self.label_choiceClan.setTextFormat(QtCore.Qt.AutoText)
-        self.label_choiceClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_choiceClan.setAlignment(
+            QtCore.Qt.AlignBottom
+            | QtCore.Qt.AlignLeading
+            | QtCore.Qt.AlignLeft
+        )
         self.label_choiceClan.setObjectName("label_choiceClan")
         self.horizontalLayout.addWidget(self.label_choiceClan)
         self.comboBox_choiceClan = QtWidgets.QComboBox(self.frame_top)
@@ -59,19 +67,23 @@ class Ui_Review(object):
         font.setFamily("Monotype Corsiva")
         font.setPointSize(14)
         self.comboBox_choiceClan.setFont(font)
-        self.comboBox_choiceClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
-"color: rgb(190, 190, 190);\n"
-"border-radius: 10px;\n"
-"border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
-"border-right: 2px solid rgb(80, 80, 85, 255);\n"
-"border-top: 2px solid rgb(80, 80, 85, 255);\n"
-"border-left: 2px solid rgb(80, 80, 85, 255);\n"
-"selection-background-color: white;\n"
-"selection-color: rgba(21, 22, 26, 255);\n"
-"")
+        self.comboBox_choiceClan.setStyleSheet(
+            "background-color: rgba(21, 22, 26, 255);\n"
+            "color: rgb(190, 190, 190);\n"
+            "border-radius: 10px;\n"
+            "border-bottom: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-right: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-top: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-left: 2px solid rgba(80, 80, 85, 255);\n"
+            "selection-background-color: white;\n"
+            "selection-color: rgba(21, 22, 26, 255);\n"
+            ""
+        )
         self.comboBox_choiceClan.setObjectName("comboBox_choiceClan")
         self.horizontalLayout.addWidget(self.comboBox_choiceClan)
-        self.verticalLayout_2.addWidget(self.frame_top, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout_2.addWidget(
+            self.frame_top, 0, QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter
+        )
         self.line = QtWidgets.QFrame(self.main_frame)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -82,11 +94,17 @@ class Ui_Review(object):
         font.setFamily("Times New Roman")
         font.setPointSize(12)
         self.tableWidget.setFont(font)
-        self.tableWidget.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
-"color: rgb(190, 190, 190);\n"
-"gridline-color: rgb(255, 255, 255);")
-        self.tableWidget.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
-        self.tableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
+        self.tableWidget.setStyleSheet(
+            "background-color: rgba(21, 22, 26, 255);\n"
+            "color: rgb(190, 190, 190);\n"
+            "gridline-color: rgb(255, 255, 255);"
+        )
+        self.tableWidget.setVerticalScrollMode(
+            QtWidgets.QAbstractItemView.ScrollPerPixel
+        )
+        self.tableWidget.setHorizontalScrollMode(
+            QtWidgets.QAbstractItemView.ScrollPerPixel
+        )
         self.tableWidget.setRowCount(0)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(9)
@@ -184,29 +202,33 @@ class Ui_Review(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_done.setFont(font)
-        self.pushButton_done.setStyleSheet("QPushButton {\n"
-"    text-align: center;\n"
-"    background-color: rgb(80, 80, 85);\n"
-"    border-bottom: 2px solid rgba(70, 70, 70, 150);\n"
-"    border-radius: 8px;\n"
-"    padding: 5px;\n"
-"    color: rgb(32, 33, 37);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #00c580;\n"
-"    color: white;\n"
-"    border: none;\n"
-"    float: right;\n"
-"    padding: 5px;\n"
-"    border-bottom: 2px solid rgba(38, 127, 51, 130);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(0, 136, 86);\n"
-"}")
+        self.pushButton_done.setStyleSheet(
+            "QPushButton {\n"
+            "    text-align: center;\n"
+            "    background-color: rgb(80, 80, 85);\n"
+            "    border-bottom: 2px solid rgba(70, 70, 70, 150);\n"
+            "    border-radius: 8px;\n"
+            "    padding: 5px;\n"
+            "    color: rgb(32, 33, 37);\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: #00c580;\n"
+            "    color: white;\n"
+            "    border: none;\n"
+            "    float: right;\n"
+            "    padding: 5px;\n"
+            "    border-bottom: 2px solid rgba(38, 127, 51, 130);\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: rgb(0, 136, 86);\n"
+            "}"
+        )
         self.pushButton_done.setObjectName("pushButton_done")
-        self.verticalLayout_2.addWidget(self.pushButton_done, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_2.addWidget(
+            self.pushButton_done, 0, QtCore.Qt.AlignHCenter
+        )
         self.verticalLayout.addWidget(self.main_frame)
 
         self.retranslateUi(Review)
@@ -221,9 +243,9 @@ class Ui_Review(object):
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("Review", "Прізвище"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Review", "Ім\'я"))
+        item.setText(_translate("Review", "Ім'я"))
         item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("Review", "Ім\'я по батькові"))
+        item.setText(_translate("Review", "Ім'я по батькові"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("Review", "Місце народження"))
         item = self.tableWidget.horizontalHeaderItem(5)
@@ -239,6 +261,7 @@ class Ui_Review(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Review = QtWidgets.QDialog()
     ui = Ui_Review()

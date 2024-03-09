@@ -10,6 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_AddRemoveClan(object):
     def setupUi(self, AddRemoveClan):
         AddRemoveClan.setObjectName("AddRemoveClan")
@@ -17,7 +18,11 @@ class Ui_AddRemoveClan(object):
         AddRemoveClan.setMinimumSize(QtCore.QSize(470, 225))
         AddRemoveClan.setMaximumSize(QtCore.QSize(470, 225))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Icons/Select.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap("Icons/Select.ico"),
+            QtGui.QIcon.Normal,
+            QtGui.QIcon.Off,
+        )
         AddRemoveClan.setWindowIcon(icon)
         AddRemoveClan.setStyleSheet("background-color: rgb(32, 33, 37);")
         AddRemoveClan.setModal(True)
@@ -47,7 +52,11 @@ class Ui_AddRemoveClan(object):
         self.label_addClan.setMouseTracking(True)
         self.label_addClan.setStyleSheet("color: white;")
         self.label_addClan.setTextFormat(QtCore.Qt.AutoText)
-        self.label_addClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_addClan.setAlignment(
+            QtCore.Qt.AlignBottom
+            | QtCore.Qt.AlignLeading
+            | QtCore.Qt.AlignLeft
+        )
         self.label_addClan.setObjectName("label_addClan")
         self.verticalLayout.addWidget(self.label_addClan)
         self.lineEdit_addClan = QtWidgets.QLineEdit(self.frame_left)
@@ -58,13 +67,15 @@ class Ui_AddRemoveClan(object):
         font.setPointSize(14)
         self.lineEdit_addClan.setFont(font)
         self.lineEdit_addClan.setMouseTracking(False)
-        self.lineEdit_addClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
-"color: rgb(190, 190, 190);\n"
-"border-radius: 10px;\n"
-"border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
-"border-right: 2px solid rgb(80, 80, 85, 255);\n"
-"border-top: 2px solid rgb(80, 80, 85, 255);\n"
-"border-left: 2px solid rgb(80, 80, 85, 255);")
+        self.lineEdit_addClan.setStyleSheet(
+            "background-color: rgba(21, 22, 26, 255);\n"
+            "color: rgb(190, 190, 190);\n"
+            "border-radius: 10px;\n"
+            "border-bottom: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-right: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-top: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-left: 2px solid rgba(80, 80, 85, 255);"
+        )
         self.lineEdit_addClan.setText("")
         self.lineEdit_addClan.setCursorMoveStyle(QtCore.Qt.LogicalMoveStyle)
         self.lineEdit_addClan.setClearButtonEnabled(True)
@@ -80,7 +91,9 @@ class Ui_AddRemoveClan(object):
         self.label_or.setTextFormat(QtCore.Qt.AutoText)
         self.label_or.setAlignment(QtCore.Qt.AlignCenter)
         self.label_or.setObjectName("label_or")
-        self.verticalLayout.addWidget(self.label_or, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.verticalLayout.addWidget(
+            self.label_or, 0, QtCore.Qt.AlignRight | QtCore.Qt.AlignBottom
+        )
         self.label_removeClan = QtWidgets.QLabel(self.frame_left)
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
@@ -88,7 +101,11 @@ class Ui_AddRemoveClan(object):
         self.label_removeClan.setFont(font)
         self.label_removeClan.setStyleSheet("color: white;")
         self.label_removeClan.setTextFormat(QtCore.Qt.AutoText)
-        self.label_removeClan.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_removeClan.setAlignment(
+            QtCore.Qt.AlignBottom
+            | QtCore.Qt.AlignLeading
+            | QtCore.Qt.AlignLeft
+        )
         self.label_removeClan.setObjectName("label_removeClan")
         self.verticalLayout.addWidget(self.label_removeClan)
         self.comboBox_choiceRemoveClan = QtWidgets.QComboBox(self.frame_left)
@@ -98,26 +115,28 @@ class Ui_AddRemoveClan(object):
         font.setFamily("Monotype Corsiva")
         font.setPointSize(14)
         self.comboBox_choiceRemoveClan.setFont(font)
-        self.comboBox_choiceRemoveClan.setStyleSheet("background-color: rgba(21, 22, 26, 255);\n"
-"color: rgb(190, 190, 190);\n"
-"border-radius: 10px;\n"
-"border-bottom: 2px solid rgb(80, 80, 85, 255);\n"
-"border-right: 2px solid rgb(80, 80, 85, 255);\n"
-"border-top: 2px solid rgb(80, 80, 85, 255);\n"
-"border-left: 2px solid rgb(80, 80, 85, 255);\n"
-"selection-background-color: white;\n"
-"selection-color:rgba(21, 22, 26, 255);\n"
-"")
-        self.comboBox_choiceRemoveClan.setObjectName("comboBox_choiceRemoveClan")
+        self.comboBox_choiceRemoveClan.setStyleSheet(
+            "background-color: rgba(21, 22, 26, 255);\n"
+            "color: rgb(190, 190, 190);\n"
+            "border-radius: 10px;\n"
+            "border-bottom: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-right: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-top: 2px solid rgba(80, 80, 85, 255);\n"
+            "border-left: 2px solid rgba(80, 80, 85, 255);\n"
+            "selection-background-color: white;\n"
+            "selection-color:rgba(21, 22, 26, 255);\n"
+            ""
+        )
+        self.comboBox_choiceRemoveClan.setObjectName(
+            "comboBox_choiceRemoveClan"
+        )
         self.comboBox_choiceRemoveClan.addItem("")
         self.comboBox_choiceRemoveClan.setItemText(0, "")
         self.verticalLayout.addWidget(self.comboBox_choiceRemoveClan)
         self.horizontalLayout_2.addWidget(self.frame_left)
         self.line = QtWidgets.QFrame(self.main_frame)
         self.line.setMinimumSize(QtCore.QSize(0, 160))
-        self.line.setStyleSheet("Line{\n"
-"    color: rgb(21, 22, 26);\n"
-"}")
+        self.line.setStyleSheet("Line{\n" "    color: rgb(21, 22, 26);\n" "}")
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
@@ -129,10 +148,16 @@ class Ui_AddRemoveClan(object):
         self.label_note.setFont(font)
         self.label_note.setMouseTracking(True)
         self.label_note.setStyleSheet("color: white;")
-        self.label_note.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_note.setAlignment(
+            QtCore.Qt.AlignBottom
+            | QtCore.Qt.AlignLeading
+            | QtCore.Qt.AlignLeft
+        )
         self.label_note.setWordWrap(True)
         self.label_note.setObjectName("label_note")
-        self.horizontalLayout_2.addWidget(self.label_note, 0, QtCore.Qt.AlignVCenter)
+        self.horizontalLayout_2.addWidget(
+            self.label_note, 0, QtCore.Qt.AlignVCenter
+        )
         self.verticalLayout_2.addWidget(self.main_frame)
         self.pushButton_done = QtWidgets.QPushButton(AddRemoveClan)
         self.pushButton_done.setMinimumSize(QtCore.QSize(135, 35))
@@ -143,29 +168,33 @@ class Ui_AddRemoveClan(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_done.setFont(font)
-        self.pushButton_done.setStyleSheet("QPushButton {\n"
-"    text-align: center;\n"
-"    background-color: rgb(80, 80, 85);\n"
-"    border-bottom: 2px solid rgba(70, 70, 70, 150);\n"
-"    border-radius: 8px;\n"
-"    padding: 5px;\n"
-"    color: rgb(32, 33, 37);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #00c580;\n"
-"    color: white;\n"
-"    border: none;\n"
-"    float: right;\n"
-"    padding: 5px;\n"
-"    border-bottom: 2px solid rgba(38, 127, 51, 130);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(0, 136, 86);\n"
-"}")
+        self.pushButton_done.setStyleSheet(
+            "QPushButton {\n"
+            "    text-align: center;\n"
+            "    background-color: rgb(80, 80, 85);\n"
+            "    border-bottom: 2px solid rgba(70, 70, 70, 150);\n"
+            "    border-radius: 8px;\n"
+            "    padding: 5px;\n"
+            "    color: rgb(32, 33, 37);\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: #00c580;\n"
+            "    color: white;\n"
+            "    border: none;\n"
+            "    float: right;\n"
+            "    padding: 5px;\n"
+            "    border-bottom: 2px solid rgba(38, 127, 51, 130);\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: rgb(0, 136, 86);\n"
+            "}"
+        )
         self.pushButton_done.setObjectName("pushButton_done")
-        self.verticalLayout_2.addWidget(self.pushButton_done, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_2.addWidget(
+            self.pushButton_done, 0, QtCore.Qt.AlignHCenter
+        )
 
         self.retranslateUi(AddRemoveClan)
         QtCore.QMetaObject.connectSlotsByName(AddRemoveClan)
@@ -173,15 +202,28 @@ class Ui_AddRemoveClan(object):
     def retranslateUi(self, AddRemoveClan):
         _translate = QtCore.QCoreApplication.translate
         AddRemoveClan.setWindowTitle(_translate("AddRemoveClan", "Родини"))
-        self.label_addClan.setText(_translate("AddRemoveClan", "<html><head/><body><p>Додати рід <span style=\" color:#fb4938;\">*</span></p></body></html>"))
+        self.label_addClan.setText(
+            _translate(
+                "AddRemoveClan",
+                '<html><head/><body><p>Додати рід <span style=" color:#fb4938;">*</span></p></body></html>',
+            )
+        )
         self.label_or.setText(_translate("AddRemoveClan", "або"))
-        self.label_removeClan.setText(_translate("AddRemoveClan", " Видалити рід"))
-        self.label_note.setText(_translate("AddRemoveClan", "<html><head/><body><p><span style=\" color:#fb4938;\">* </span>Прізвище роду записується в родовому відмінку множини. Наприклад: Мельник - <span style=\" font-weight:600;\">Мельників</span></p></body></html>"))
+        self.label_removeClan.setText(
+            _translate("AddRemoveClan", " Видалити рід")
+        )
+        self.label_note.setText(
+            _translate(
+                "AddRemoveClan",
+                '<html><head/><body><p><span style=" color:#fb4938;">* </span>Прізвище роду записується в родовому відмінку множини. Наприклад: Мельник - <span style=" font-weight:600;">Мельників</span></p></body></html>',
+            )
+        )
         self.pushButton_done.setText(_translate("AddRemoveClan", "Готово"))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     AddRemoveClan = QtWidgets.QDialog()
     ui = Ui_AddRemoveClan()
