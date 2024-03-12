@@ -6,10 +6,15 @@
 More screenshots at the [link](/Screenshots/).
 
 ## Prerequisites
-In order for the program to work, you need to install several additional modules: PyQt5, openpyxl, tkinter and Pillow. They can be installed with the following command:
+
 ```bash
-pip install PyQt5, openpyxl, tkinter, Pillow 
+python -m venv .venv
+source .venv/bin/activate
+export PYTHONPATH="$(pwd):$(pwd)/windows"
+pip install -r requirements.txt 
 ```
+
+To install `tkinter` on Linux, please, follow [this instruction](https://tecadmin.net/how-to-install-python-tkinter-on-linux/).
 
 ## Getting started
 You can clone the program using the command below or download and unzip the archive.

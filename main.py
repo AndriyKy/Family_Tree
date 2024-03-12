@@ -1,10 +1,13 @@
 import sys
+from os.path import join as join_path
 from re import search
 from tkinter import Tk
 from tkinter import filedialog as fd
-from tkinter import messagebox as mesbox
+from tkinter import messagebox as msbox
+from typing import Any
 
-from openpyxl import load_workbook
+from openpyxl import Workbook, load_workbook
+from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from windows import (
@@ -18,470 +21,362 @@ from windows import (
 
 app = QtWidgets.QApplication(sys.argv)
 
-MainWindow = QtWidgets.QMainWindow()
-ui = Ui_MainWindow()
-ui.setupUi(MainWindow)
-MainWindow.show()
+main_window = QtWidgets.QMainWindow()
+ui_main_window = Ui_MainWindow()
+ui_main_window.setupUi(main_window)
+main_window.show()
+
+WORKBOOK_NAME = "Family_lists.xlsx"
 
 
-varMy_cardWindow = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-varAdd_editWindow = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-varFamily_tiesWindow = [1, 2, 3, 4, 5, 6]
+class WindowConstructor(QtWidgets.QDialog):
+    def __init__(
+        self,
+        window: type[
+            Ui_AddEdit
+            | Ui_AddRemoveClan
+            | Ui_FamilyTies
+            | Ui_MainWindow
+            | Ui_MyCard
+            | Ui_Review
+        ],
+        **kwargs: Any,
+    ) -> None:
+        super().__init__(**kwargs)
+        self.ui_window = window()
+        self.ui_window.setupUi(self)
+
+    def openEvent(self) -> None:
+        self.workbook = load_workbook(WORKBOOK_NAME)
+        self.show()
+
+    def closeEvent(self, *args: Any) -> None:
+        self.workbook.save(WORKBOOK_NAME)
+        self.workbook.close()
+        super().closeEvent(*args)
+
+    @staticmethod
+    def resize_image(file_path) -> tuple[int, int]:
+        image = Image.open(file_path)
+        width, height = image.size
+        max_width = max_height = 175
+
+        if width > height:
+            max_height = (max_width * height) // width
+        elif width < height:
+            max_width = (max_height * width) // height
+
+        return max_width, max_height
+
+    def fetch_image_path(self) -> str | None:
+        return (
+            fd.askopenfilename(
+                filetypes=(
+                    ("JPEG image", ["*.jpeg", "*.jpg", "*.JPG"]),
+                    ("PNG image", "*.png"),
+                )
+            )
+            or None  # `askopenfilename` returns `()` if nothing is selected.
+        )
+
+    @staticmethod
+    def is_input_valid(family_member: dict[str, str]) -> bool:
+        if (
+            not family_member["last_name"]
+            or not family_member["first_name"]
+            or not family_member["year_of_birth"]
+            or not family_member["family_name"]
+        ):
+            msbox.showwarning(
+                "Увага!",
+                "Інформація не введена в одне з обов'язкових полів!",
+            )
+        elif any(
+            search(r"[:\/\*\?[\]<>|]", item) for item in family_member.values()
+        ):
+            msbox.showerror(
+                "Увага!",
+                "Заборонено вводити такі символи: / \ * ? [ ] < > : |",
+            )
+        elif not family_member["year_of_birth"].isdigit() or (
+            family_member["year_of_death"]
+            and not family_member["year_of_death"].isdigit()
+        ):
+            msbox.showwarning("Увага!", 'В поле "Рік ..." введено не цифри!')
+        else:
+            return True
+        return False
+
+    def set_icon(self, image_path: str) -> None:
+        width, height = resize_image(image_path)
+        icon = QtGui.QIcon()
+        icon.addPixmap(
+            QtGui.QPixmap(image_path), QtGui.QIcon.Normal, QtGui.QIcon.Off
+        )
+        self.ui_window.image_Button.setIcon(icon)
+        self.ui_window.image_Button.setIconSize(QtCore.QSize(width, height))
 
 
-def my_card_def():
-    # Create form and init ui
-    MyCard = QtWidgets.QDialog()
-    ui = Ui_MyCard()
-    ui.setupUi(MyCard)
-    MyCard.show()
+class MyCard(WindowConstructor):
+    def __init__(self) -> None:
+        super().__init__(Ui_MyCard)
 
-    try:
-        # Connect an Excel file
-        wb = load_workbook("Family_lists.xlsx")
-        ws = wb[wb.sheetnames[0]]
+    def openEvent(self) -> None:
+        super().openEvent()
+        self.worksheet = self.workbook.active
+        self.fill_window()
 
-        # Check for the existence of information in the first line
-        if ws["F1"].value != None:
-            # Output data from the first line
-            if ws["E1"].value == " Чоловіча":
-                ui.comboBox_sex.setItemText(0, " Чоловіча")
+    def fill_window(self) -> None:
+        # Check for the existence of information in the first line.
+        if self.worksheet["F1"].value:
+            if image_path := self.worksheet["A1"].value:
+                self.set_icon(image_path)
+            if self.worksheet["E1"].value == "Чоловіча":
+                self.ui_window.comboBox_sex.setItemText(0, "Чоловіча")
             else:
-                ui.comboBox_sex.setItemText(0, " Жіноча")
-                ui.comboBox_sex.setItemText(1, " Чоловіча")
+                self.ui_window.comboBox_sex.setItemText(0, "Жіноча")
+                self.ui_window.comboBox_sex.setItemText(1, "Чоловіча")
 
-            ui.lineEdit_lname.setText(ws["F1"].value)
-            ui.lineEdit_fname.setText(ws["G1"].value)
-            ui.lineEdit_patronymic.setText(ws["H1"].value)
-            ui.lineEdit_placeOfBirth.setText(ws["I1"].value)
-            ui.lineEdit_placeOfDeath.setText(ws["J1"].value)
-            ui.lineEdit_yearOfBirth.setText(ws["K1"].value)
-            ui.lineEdit_yearOfDeath.setText(ws["L1"].value)
-            ui.lineEdit_clanName.setText(ws.title)
-            ui.plainTextEdit_addinfo.setPlainText(ws["M1"].value)
+            self.ui_window.lineEdit_lname.setText(self.worksheet["F1"].value)
+            self.ui_window.lineEdit_fname.setText(self.worksheet["G1"].value)
+            self.ui_window.lineEdit_patronymic.setText(
+                self.worksheet["H1"].value
+            )
+            self.ui_window.lineEdit_placeOfBirth.setText(
+                self.worksheet["I1"].value
+            )
+            self.ui_window.lineEdit_placeOfDeath.setText(
+                self.worksheet["J1"].value
+            )
+            self.ui_window.lineEdit_yearOfBirth.setText(
+                self.worksheet["K1"].value
+            )
+            self.ui_window.lineEdit_yearOfDeath.setText(
+                self.worksheet["L1"].value
+            )
+            self.ui_window.lineEdit_clanName.setText(self.worksheet.title)
+            self.ui_window.plainTextEdit_addinfo.setPlainText(
+                self.worksheet["M1"].value
+            )
+
+    def set_avatar(self) -> None:
+        image_path = self.fetch_image_path()
+        if image_path:
+            self.worksheet["A1"] = image_path
+            self.set_icon(image_path)
+
+    def set_my_card_button_label(self) -> None:
+        ui_main_window.pushButton_1.setText(
+            f'Рід: {self.worksheet.title}\n'
+            f'{self.worksheet["G1"].value} {self.worksheet["F1"].value}'
+        )
+
+        if image_path := self.worksheet["A1"].value:
+            icon1 = QtGui.QIcon()
+            icon1.addPixmap(
+                QtGui.QPixmap(image_path),
+                QtGui.QIcon.Normal,
+                QtGui.QIcon.Off,
+            )
+
+            ui_main_window.pushButton_1.setIcon(icon1)
+
+    def save(self) -> None:
+        family_member = {
+            "sex": self.ui_window.comboBox_sex.currentText().strip(),
+            "last_name": self.ui_window.lineEdit_lname.text().strip(),
+            "first_name": self.ui_window.lineEdit_fname.text().strip(),
+            "patronymic": self.ui_window.lineEdit_patronymic.text().strip(),
+            "place_of_birth": self.ui_window.lineEdit_placeOfBirth.text().strip(),
+            "place_of_death": self.ui_window.lineEdit_placeOfDeath.text().strip(),
+            "year_of_birth": self.ui_window.lineEdit_yearOfBirth.text().strip(),
+            "year_of_death": self.ui_window.lineEdit_yearOfDeath.text().strip(),
+            "add_info": self.ui_window.plainTextEdit_addinfo.toPlainText().strip()
+            or " ",
+            "family_name": self.ui_window.lineEdit_clanName.text().strip(),
+        }
+
+        if self.is_input_valid(family_member):
+            self.worksheet.title = family_member["family_name"]
+            del family_member["family_name"]
+            for column, value in enumerate(family_member.values()):
+                self.worksheet.cell(row=1, column=column + 5, value=value)
+
+            # TODO: use hash instead. Don't change the initial value!!!
+            self.worksheet.cell(  # ID of a member.
+                row=1,
+                column=4,
+                value=family_member["last_name"][0]
+                + family_member["first_name"][0]
+                + family_member["year_of_birth"],
+            )
+
+            self.set_my_card_button_label()
+            self.close()
+
+
+class AddRemoveClan(WindowConstructor):
+    def __init__(self) -> None:
+        super().__init__(Ui_AddRemoveClan)
+
+    def openEvent(self) -> None:
+        super().openEvent()
+        self.fill_clan_names()
+
+    def fill_clan_names(self) -> None:
+        self.ui_window.lineEdit_addClan.clear()
+        self.ui_window.comboBox_choiceRemoveClan.clear()
+        self.ui_window.comboBox_choiceRemoveClan.insertItem(0, "")
+        self.ui_window.comboBox_choiceRemoveClan.insertItems(
+            1, self.workbook.sheetnames
+        )
+
+    def save(self) -> None:
+        clan_name = self.ui_window.lineEdit_addClan.text()
+        clan_to_remove = self.ui_window.comboBox_choiceRemoveClan.currentText()
+
+        if clan_name:
+            if search(r"[:\/\*\?[\]<>|]", clan_name):
+                msbox.showerror(
+                    "Увага!",
+                    "Заборонено вводити такі символи: / \ * ? [ ] < > : |",
+                )
+                return
+            else:
+                self.workbook.create_sheet(clan_name)
+        if clan_to_remove:
+            if len(self.workbook.sheetnames) == 1:
+                msbox.showerror("Увага!", "Неможливо видалити єдиний рід!")
+                return
+            else:
+                del self.workbook[clan_to_remove]
+                msbox.showinfo(message=f'Рід "{clan_to_remove}" видалено!')
+        self.close()
+
+
+class AddEdit(WindowConstructor):
+    def __init__(self) -> None:
+        super().__init__(Ui_AddEdit)
+
+    def openEvent(self) -> None:
+        super().openEvent()
+        self.ui_window.comboBox_choiceClan.currentIndexChanged.connect(
+            self.fill_clans_and_members
+        )
+        self.ui_window.comboBox_choiceClan.addItems(self.workbook.sheetnames)
+        self.fill_clans_and_members()
+
+    def closeEvent(self, *args: Any) -> None:
+        self.ui_window.comboBox_choiceClan.disconnect()
+        self.ui_window.comboBox_choiceClan.clear()
+        return super().closeEvent(*args)
+
+    def fill_window(self) -> None:
+        row_index = self.ui_window.comboBox_addEdit.currentIndex()
+        if row_index == 0:
+            self.ui_window.lineEdit_lname.clear()
+            self.ui_window.lineEdit_fname.clear()
+            self.ui_window.lineEdit_patronymic.clear()
+            self.ui_window.lineEdit_placeOfBirth.clear()
+            self.ui_window.lineEdit_placeOfDeath.clear()
+            self.ui_window.lineEdit_yearOfBirth.clear()
+            self.ui_window.lineEdit_yearOfDeath.clear()
+            self.ui_window.plainTextEdit_addinfo.clear()
+            self.set_icon(join_path("Icons", "Add_image.png"))
+        else:
+            clan_index = self.ui_window.comboBox_choiceClan.currentIndex()
+            sheet = self.workbook[self.workbook.sheetnames[clan_index]]
+            row = sheet[row_index]
+            if row[4].value == "Чоловіча":
+                self.ui_window.comboBox_sex.setItemText(0, "Чоловіча")
+            else:
+                self.ui_window.comboBox_sex.setItemText(0, "Жіноча")
+                self.ui_window.comboBox_sex.setItemText(1, "Чоловіча")
+
+            self.ui_window.lineEdit_lname.setText(row[5].value)
+            self.ui_window.lineEdit_fname.setText(row[6].value)
+            self.ui_window.lineEdit_patronymic.setText(row[7].value)
+            self.ui_window.lineEdit_placeOfBirth.setText(row[8].value)
+            self.ui_window.lineEdit_placeOfDeath.setText(row[9].value)
+            self.ui_window.lineEdit_yearOfBirth.setText(row[10].value)
+            self.ui_window.lineEdit_yearOfDeath.setText(row[11].value)
+            self.ui_window.plainTextEdit_addinfo.setPlainText(row[12].value)
 
             # Output the thumbnail to the image_Button if the cell is not empty
-            if ws["A1"].value != None:
-                MAX_WIDTH, MAX_HEIGHT = resizeImage(ws.title, ws["A1"].value)
-                icon = QtGui.QIcon()
-                icon1 = QtGui.QIcon()
-                icon1.addPixmap(
-                    QtGui.QPixmap(ws["A1"].value),
-                    QtGui.QIcon.Normal,
-                    QtGui.QIcon.Off,
-                )
-                ui.image_Button.setIcon(icon1)
-                ui.image_Button.setIconSize(
-                    QtCore.QSize(MAX_WIDTH, MAX_HEIGHT)
-                )
-                icon.addPixmap(
-                    QtGui.QPixmap(ws["A1"].value),
-                    QtGui.QIcon.Normal,
-                    QtGui.QIcon.Off,
-                )
-                MyCard.setWindowIcon(icon)
+            self.set_icon(row[0].value or join_path("Icons", "Add_image.png"))
 
-        # Image selection function
-        def openImage():
-            Tk().withdraw()
-            file_name = fd.askopenfilename(
-                filetypes=(
-                    ("JPEG image", "*.jpeg;*.jpg"),
-                    ("PNG image", "*.png"),
-                )
-            )
+    def fill_clans_and_members(self) -> None:
+        clan_name = self.ui_window.comboBox_choiceClan.currentText()
+        worksheet = self.workbook[clan_name]
+        count = self.ui_window.comboBox_addEdit.count()
 
-            if file_name != "":
-                ws["A1"] = file_name
-                MAX_WIDTH, MAX_HEIGHT = resizeImage(ws.title, ws["A1"].value)
-                icon1 = QtGui.QIcon()
-                icon1.addPixmap(
-                    QtGui.QPixmap(ws["A1"].value),
-                    QtGui.QIcon.Normal,
-                    QtGui.QIcon.Off,
-                )
-                ui.image_Button.setIcon(icon1)
-                ui.image_Button.setIconSize(
-                    QtCore.QSize(MAX_WIDTH, MAX_HEIGHT)
-                )
+        if count > 1:
+            self.ui_window.comboBox_addEdit.setCurrentIndex(0)
+            for _ in range(1, count):
+                self.ui_window.comboBox_addEdit.removeItem(1)
+            count = 1
+        if count == 1:
+            if worksheet["F1"].value:
+                for row_number in range(1, worksheet.max_row + 1):
+                    self.ui_window.comboBox_addEdit.insertItem(
+                        row_number,
+                        f"{worksheet[row_number][5].value} "
+                        f"{worksheet[row_number][6].value}, "
+                        f"{worksheet[row_number][10].value}",
+                    )
 
-        # The function collects values ​​from line_Edit,
-        # checks the conditions and writes the values ​​to file
-        def returnToMainWindow():
-            varMy_cardWindow[0] = ui.comboBox_sex.currentText()
-            varMy_cardWindow[1] = ui.lineEdit_lname.text()
-            varMy_cardWindow[2] = ui.lineEdit_fname.text()
-            varMy_cardWindow[3] = ui.lineEdit_patronymic.text()
-            varMy_cardWindow[4] = ui.lineEdit_placeOfBirth.text()
-            varMy_cardWindow[5] = ui.lineEdit_placeOfDeath.text()
-            varMy_cardWindow[6] = ui.lineEdit_yearOfBirth.text()
-            varMy_cardWindow[7] = ui.lineEdit_yearOfDeath.text()
-            varMy_cardWindow[8] = ui.plainTextEdit_addinfo.toPlainText()
-            clanName = ui.lineEdit_clanName.text()
+    def set_avatar(self) -> None:
+        image_path = self.fetch_image_path()
+        if image_path:
+            clan_index = self.ui_window.comboBox_choiceClan.currentIndex()
+            worksheet = self.workbook[self.workbook.sheetnames[clan_index]]
+            row_index = self.ui_window.comboBox_addEdit.currentIndex()
 
-            if (
-                varMy_cardWindow[1] == ""
-                or varMy_cardWindow[2] == ""
-                or varMy_cardWindow[6] == ""
-                or clanName == ""
-            ):
-                Tk().withdraw()
-                mesbox.showwarning(
-                    "Увага!",
-                    "Інформація не введена в одне з обов'язкових полів!",
-                )
-            elif search(r"[\\/?*]", clanName):
-                Tk().withdraw()
-                mesbox.showerror(
-                    "Увага!",
-                    'В поле "Прізвище роду" введено недозволений символ!',
-                )
-            elif varMy_cardWindow[6].isdigit() == False:
-                Tk().withdraw()
-                mesbox.showwarning(
-                    "Увага!", 'В поле "Рік ..." введено не цифри!'
-                )
-            elif (
-                varMy_cardWindow[1][0] == " "
-                or varMy_cardWindow[2][0] == " "
-                or varMy_cardWindow[6][0] == " "
-            ):
-                Tk().withdraw()
-                mesbox.showerror(
-                    "Увага!",
-                    "Запис в одному з обов'язкових полів некоректний!",
-                )
-            else:
-                if varMy_cardWindow[8] == "":
-                    varMy_cardWindow[8] = " "
-
-                i = 0
-                for row in ws.iter_rows(
-                    min_row=1, max_row=1, min_col=5, max_col=13
-                ):
-                    for cell in row:
-                        cell.value = varMy_cardWindow[i]
-                        i += 1
-                ws.title = clanName
-
-                ws["D1"] = (
-                    varMy_cardWindow[1][0]
-                    + varMy_cardWindow[2][0]
-                    + varMy_cardWindow[6]
-                )
-
-                wb.save("Family_lists.xlsx")
-                set_info_to_PB1()
-                MyCard.close()
-                MainWindow.show()
-
-        ui.image_Button.clicked.connect(openImage)
-        ui.pushButton_done.clicked.connect(returnToMainWindow)
-
-    finally:
-        wb.close()
-
-
-def addRemove_clan_def():
-    # Create form and init ui
-    AddRemoveClan = QtWidgets.QDialog()
-    ui = Ui_AddRemoveClan()
-    ui.setupUi(AddRemoveClan)
-    AddRemoveClan.show()
-
-    wb = load_workbook("Family_lists.xlsx")
-    # Loop to generate file sheet names
-    for i in range(len(wb.sheetnames)):
-        ui.comboBox_choiceRemoveClan.insertItem(i + 1, wb.sheetnames[i])
-
-    wb.close()
-
-    def returnToMainWindow():
-        add_clan = ui.lineEdit_addClan.text()
-        choice_rm_clan = ui.comboBox_choiceRemoveClan.currentText()
-
-        wb = load_workbook("Family_lists.xlsx")
-
-        if add_clan == "" and choice_rm_clan == "":
-            wb.close()
-            AddRemoveClan.close()
-            MainWindow.show()
-        elif search(r"[\\/?*]", add_clan):
-            Tk().withdraw()
-            mesbox.showerror(
-                "Увага!", 'В поле "Додати рід" введено недозволений символ!'
-            )
-        elif choice_rm_clan != "" and len(wb.sheetnames) == 1:
-            Tk().withdraw()
-            mesbox.showerror(
-                "Увага!",
-                "Якщо рід в списку тільки один, \nто його не можна видаляти!",
-            )
-        else:
-            # If the above conditions are not met, a new letter is created
-            if add_clan != "":
-                wb.create_sheet(add_clan)
-
-            # or (and) the selected letter is deleted
-            if choice_rm_clan != "":
-                wb.remove(wb[choice_rm_clan])
-
-                Tk().withdraw()
-                mesbox.showinfo("", f"Рід {choice_rm_clan} видалено!")
-
-            wb.save("Family_lists.xlsx")
-            wb.close()
-
-            AddRemoveClan.close()
-            MainWindow.show()
-
-    ui.pushButton_done.clicked.connect(returnToMainWindow)
-
-
-def add_edit_def():
-    # Create form and init ui
-    AddEdit = QtWidgets.QDialog()
-    ui = Ui_AddEdit()
-    ui.setupUi(AddEdit)
-    AddEdit.show()
-
-    try:
-        wb = load_workbook("Family_lists.xlsx")
-        # Dynamic clan list generation
-        for i in range(len(wb.sheetnames)):
-            ui.comboBox_choiceClan.insertItem(i, wb.sheetnames[i])
-
-        # Inserting data into window cells
-        def insertingData():
-            row_index = ui.comboBox_addEdit.currentIndex()
-            if row_index == 0:
-                ui.lineEdit_lname.clear()
-                ui.lineEdit_fname.clear()
-                ui.lineEdit_patronymic.clear()
-                ui.lineEdit_placeOfBirth.clear()
-                ui.lineEdit_placeOfDeath.clear()
-                ui.lineEdit_yearOfBirth.clear()
-                ui.lineEdit_yearOfDeath.clear()
-                ui.plainTextEdit_addinfo.clear()
-
-                icon1 = QtGui.QIcon()
-                icon1.addPixmap(
-                    QtGui.QPixmap(
-                        "C:\\Users\\Hitar\\source\\Family_tree\\Icons/Add_image.png"
-                    ),
-                    QtGui.QIcon.Normal,
-                    QtGui.QIcon.Off,
-                )
-                ui.image_Button.setIcon(icon1)
-                ui.image_Button.setIconSize(QtCore.QSize(175, 175))
-                ui.image_Button.setObjectName("image_Button")
-            else:
-                clan_index = ui.comboBox_choiceClan.currentIndex()
-                sheet = wb[wb.sheetnames[clan_index]]
-                if sheet[row_index][4].value == " Чоловіча":
-                    ui.comboBox_sex.setItemText(0, " Чоловіча")
+            if row_index == 0:  # If "Add" is selected.
+                if not worksheet[worksheet.max_row][5].value:
+                    row_index = worksheet.max_row
                 else:
-                    ui.comboBox_sex.setItemText(0, " Жіноча")
-                    ui.comboBox_sex.setItemText(1, " Чоловіча")
+                    row_index = worksheet.max_row + 1
+            worksheet.cell(row=row_index, column=1, value=image_path)
+            self.set_icon(image_path)
 
-                ui.lineEdit_lname.setText(sheet[row_index][5].value)
-                ui.lineEdit_fname.setText(sheet[row_index][6].value)
-                ui.lineEdit_patronymic.setText(sheet[row_index][7].value)
-                ui.lineEdit_placeOfBirth.setText(sheet[row_index][8].value)
-                ui.lineEdit_placeOfDeath.setText(sheet[row_index][9].value)
-                ui.lineEdit_yearOfBirth.setText(sheet[row_index][10].value)
-                ui.lineEdit_yearOfDeath.setText(sheet[row_index][11].value)
-                ui.plainTextEdit_addinfo.setPlainText(
-                    sheet[row_index][12].value
-                )
+    def save(self) -> None:
+        family_member = {
+            "sex": self.ui_window.comboBox_sex.currentText().strip(),
+            "last_name": self.ui_window.lineEdit_lname.text().strip(),
+            "first_name": self.ui_window.lineEdit_fname.text().strip(),
+            "patronymic": self.ui_window.lineEdit_patronymic.text().strip(),
+            "place_of_birth": self.ui_window.lineEdit_placeOfBirth.text().strip(),
+            "place_of_death": self.ui_window.lineEdit_placeOfDeath.text().strip(),
+            "year_of_birth": self.ui_window.lineEdit_yearOfBirth.text().strip(),
+            "year_of_death": self.ui_window.lineEdit_yearOfDeath.text().strip(),
+            "add_info": self.ui_window.plainTextEdit_addinfo.toPlainText().strip()
+            or " ",
+            "family_name": " ",
+        }
+        clan_index = self.ui_window.comboBox_choiceClan.currentIndex()
+        worksheet = self.workbook[self.workbook.sheetnames[clan_index]]
+        row_index = self.ui_window.comboBox_addEdit.currentIndex()
 
-                # Output the thumbnail to the image_Button if the cell is not empty
-                if sheet[row_index][0].value != None:
-                    MAX_WIDTH, MAX_HEIGHT = resizeImage(
-                        sheet.title, sheet[row_index][0].value
-                    )
-                    icon1 = QtGui.QIcon()
-                    icon1.addPixmap(
-                        QtGui.QPixmap(sheet[row_index][0].value),
-                        QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off,
-                    )
-                    ui.image_Button.setIcon(icon1)
-                    ui.image_Button.setIconSize(
-                        QtCore.QSize(MAX_WIDTH, MAX_HEIGHT)
-                    )
+        if self.is_input_valid(family_member):
+            if row_index == 0:  # If "Add" is selected.
+                if not worksheet[worksheet.max_row][5].value:
+                    row_index = worksheet.max_row
                 else:
-                    icon1 = QtGui.QIcon()
-                    icon1.addPixmap(
-                        QtGui.QPixmap(
-                            "C:\\Users\\Hitar\\source\\Family_tree\\Icons/Add_image.png"
-                        ),
-                        QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off,
-                    )
-                    ui.image_Button.setIcon(icon1)
-                    ui.image_Button.setIconSize(QtCore.QSize(175, 175))
-                    ui.image_Button.setObjectName("image_Button")
+                    row_index = worksheet.max_row + 1
 
-        # Dynamic generation of the list of persons of the selected clan
-        def genInAddEditCombo():
-            clanName = ui.comboBox_choiceClan.currentText()
-            ws = wb[clanName]
-            count = ui.comboBox_addEdit.count()
+            del family_member["family_name"]
+            for column, value in enumerate(family_member.values()):
+                worksheet.cell(row=row_index, column=column + 5, value=value)
 
-            if count > 1:
-                ui.comboBox_addEdit.setCurrentIndex(0)
-                for x in range(1, count):
-                    ui.comboBox_addEdit.removeItem(1)
-                count = 1
-            if count == 1:
-                if ws["F1"].value != None:
-                    for y in range(1, ws.max_row + 1):
-                        ui.comboBox_addEdit.insertItem(
-                            y,
-                            f"{ws[y][5].value} {ws[y][6].value}, {ws[y][10].value}",
-                        )
-
-            ui.comboBox_addEdit.currentIndexChanged.connect(insertingData)
-
-        genInAddEditCombo()
-        ui.comboBox_choiceClan.currentIndexChanged.connect(genInAddEditCombo)
-
-        # Image selection function
-        def openImage():
-            Tk().withdraw()
-            file_name = fd.askopenfilename(
-                filetypes=(
-                    ("JPEG image", "*.jpeg;*.jpg"),
-                    ("PNG image", "*.png"),
-                )
+            worksheet.cell(  # ID of a member.
+                row=row_index,
+                column=4,
+                value=f"{family_member['last_name'][0]}"
+                + f"{family_member['first_name'][0]}"
+                + f"{family_member['year_of_birth']}",
             )
-
-            if file_name != "":
-                clan_index = ui.comboBox_choiceClan.currentIndex()
-                ws = wb[wb.sheetnames[clan_index]]
-                row_index = ui.comboBox_addEdit.currentIndex()
-
-                if row_index == 0:
-                    if ws[ws.max_row][5].value == None:
-                        line_number = ws.max_row
-                    else:
-                        line_number = ws.max_row + 1
-                else:
-                    line_number = row_index
-                ws[line_number][0].value = file_name
-                MAX_WIDTH, MAX_HEIGHT = resizeImage(
-                    ws.title, ws[line_number][0].value
-                )
-                icon1 = QtGui.QIcon()
-                icon1.addPixmap(
-                    QtGui.QPixmap(ws[line_number][0].value),
-                    QtGui.QIcon.Normal,
-                    QtGui.QIcon.Off,
-                )
-                ui.image_Button.setIcon(icon1)
-                ui.image_Button.setIconSize(
-                    QtCore.QSize(MAX_WIDTH, MAX_HEIGHT)
-                )
-
-        def returnToMainWindow():
-            # Read values ​​from all lineEdit cells
-            varAdd_editWindow[0] = ui.comboBox_sex.currentText()
-            varAdd_editWindow[1] = ui.lineEdit_lname.text()
-            varAdd_editWindow[2] = ui.lineEdit_fname.text()
-            varAdd_editWindow[3] = ui.lineEdit_patronymic.text()
-            varAdd_editWindow[4] = ui.lineEdit_placeOfBirth.text()
-            varAdd_editWindow[5] = ui.lineEdit_placeOfDeath.text()
-            varAdd_editWindow[6] = ui.lineEdit_yearOfBirth.text()
-            varAdd_editWindow[7] = ui.lineEdit_yearOfDeath.text()
-            varAdd_editWindow[8] = ui.plainTextEdit_addinfo.toPlainText()
-
-            clan_index = ui.comboBox_choiceClan.currentIndex()
-            ws = wb[wb.sheetnames[clan_index]]
-            row_index = ui.comboBox_addEdit.currentIndex()
-
-            if (
-                varAdd_editWindow[1] == ""
-                or varAdd_editWindow[2] == ""
-                or varAdd_editWindow[6] == ""
-            ):
-                Tk().withdraw()
-                mesbox.showwarning(
-                    "Увага!",
-                    "Інформація не введена в одне з обов'язкових полів!",
-                )
-            elif varAdd_editWindow[6].isdigit() == False:
-                Tk().withdraw()
-                mesbox.showwarning(
-                    "Увага!", 'В поле "Рік ..." введено не цифри!'
-                )
-            elif (
-                varAdd_editWindow[1][0] == " "
-                or varAdd_editWindow[2][0] == " "
-                or varAdd_editWindow[6][0] == " "
-            ):
-                Tk().withdraw()
-                mesbox.showerror(
-                    "Увага!",
-                    "Запис в одному з обов'язкових полів некоректний!",
-                )
-            else:
-                if varAdd_editWindow[8] == "":
-                    varAdd_editWindow[8] = " "
-
-                # If 'Add' is selected
-                if row_index == 0:
-                    if ws[ws.max_row][5].value == None:
-                        line_number = ws.max_row
-                    else:
-                        line_number = ws.max_row + 1
-
-                    # Write values ​​in the desired row and columns
-                    i = 0
-                    for row in ws.iter_rows(
-                        min_row=line_number,
-                        max_row=line_number,
-                        min_col=5,
-                        max_col=13,
-                    ):
-                        for cell in row:
-                            cell.value = varAdd_editWindow[i]
-                            i += 1
-
-                    ws[ws.max_row][3].value = (
-                        varAdd_editWindow[1][0]
-                        + varAdd_editWindow[2][0]
-                        + varAdd_editWindow[6]
-                    )
-
-                else:
-                    i = 0
-                    for row in ws.iter_rows(
-                        min_row=row_index,
-                        max_row=row_index,
-                        min_col=5,
-                        max_col=13,
-                    ):
-                        for cell in row:
-                            cell.value = varAdd_editWindow[i]
-                            i += 1
-
-                    ws[row_index][3].value = (
-                        varAdd_editWindow[1][0]
-                        + varAdd_editWindow[2][0]
-                        + varAdd_editWindow[6]
-                    )
-
-                wb.save("Family_lists.xlsx")
-                set_info_to_PB1()
-                AddEdit.close()
-                MainWindow.show()
-
-        ui.pushButton_done.clicked.connect(returnToMainWindow)
-        ui.image_Button.clicked.connect(openImage)
-
-    finally:
-        wb.close()
+            self.close()
 
 
 def family_ties_def():
@@ -491,7 +386,7 @@ def family_ties_def():
     FamilyTies.show()
 
     try:
-        wb = load_workbook("Family_lists.xlsx")
+        wb = load_workbook(WORKBOOK_NAME)
         # Dynamic clan list generation
         for i in range(len(wb.sheetnames)):
             ui.comboBox_choiceClan.insertItem(i, wb.sheetnames[i])
@@ -523,7 +418,7 @@ def family_ties_def():
                             parent_index == marriage_iter
                         ):  # If they are found ...
                             if (
-                                ws[n][4].value == " Чоловіча"
+                                ws[n][4].value == "Чоловіча"
                             ):  # and the first is the father,
                                 ui.comboBox_choiceFather.insertItem(
                                     0,  # set it to the zero position of Box.
@@ -543,7 +438,7 @@ def family_ties_def():
                                             f, ""
                                         )
 
-                            if ws[n][4].value == " Жіноча":
+                            if ws[n][4].value == "Жіноча":
                                 ui.comboBox_choiceMother.insertItem(
                                     0,
                                     f"{ws[n][5].value} {ws[n][6].value}, {ws[n][10].value}",
@@ -776,7 +671,7 @@ def family_ties_def():
                     for c in range(len(varFam_t_tab_Chd)):
                         if varFam_t_tab_BS[b] == varFam_t_tab_Chd[c]:
                             Tk().withdraw()
-                            mesbox.showerror(
+                            msbox.showerror(
                                 "Увага!",
                                 'В таблиці "Брати/Сестри" і "Діти" \
                                 \nзнайдено однакові елементи!',
@@ -785,7 +680,7 @@ def family_ties_def():
 
             if choicePerson_ind == 0:
                 Tk().withdraw()
-                mesbox.showwarning(
+                msbox.showwarning(
                     "Увага!",
                     "Не вибрано, для кого встановити \nсімейні рв'язки!",
                 )
@@ -793,20 +688,20 @@ def family_ties_def():
                 choiceFather_text == "" and choiceMother_text != ""
             ):
                 Tk().withdraw()
-                mesbox.showerror("Увага!", "Не додано одного з батьків!")
+                msbox.showerror("Увага!", "Не додано одного з батьків!")
             elif (
                 choiceFather_text == choiceMother_text
                 and choiceFather_ind != 0
             ):
                 Tk().withdraw()
-                mesbox.showerror("Увага!", "Вибрано однакових батьків!")
+                msbox.showerror("Увага!", "Вибрано однакових батьків!")
             elif (
                 choiceFather_ind != 0
                 and ws[choiceFather_ind][10].value
                 > ws[choicePerson_ind][10].value
             ):
                 Tk().withdraw()
-                mesbox.showerror(
+                msbox.showerror(
                     "Увага!", 'В поле "Батько" встановлено некоректну особу!'
                 )
             elif (
@@ -815,7 +710,7 @@ def family_ties_def():
                 > ws[choicePerson_ind][10].value
             ):
                 Tk().withdraw()
-                mesbox.showerror(
+                msbox.showerror(
                     "Увага!", 'В поле "Мати" встановлено некоректну особу!'
                 )
             elif (
@@ -825,10 +720,10 @@ def family_ties_def():
                 != ws[choiceMother_ind][1].value
             ):
                 Tk().withdraw()
-                mesbox.showwarning("Увага!", "Батько або Мати вже в шлюбі!")
+                msbox.showwarning("Увага!", "Батько або Мати вже в шлюбі!")
             elif choicePartner_text == choicePerson_text:
                 Tk().withdraw()
-                mesbox.showerror(
+                msbox.showerror(
                     "Увага!",
                     'Поля "Встановити сімейні зв\'зки для" \
                                     \n і "Партнер" не можуть бути однакові!',
@@ -839,7 +734,7 @@ def family_ties_def():
                 or choiceMother_text == ""
             ):
                 Tk().withdraw()
-                mesbox.showwarning(
+                msbox.showwarning(
                     "Увага!",
                     "Не можна додавати братів чи сестер, \nпоки не вибрано батьків!",
                 )
@@ -849,7 +744,7 @@ def family_ties_def():
                 and choicePartner_text == ""
             ):
                 Tk().withdraw()
-                mesbox.showwarning(
+                msbox.showwarning(
                     "Увага!",
                     "Не можна додавати дітей, \nпоки не вибрано партнера!",
                 )
@@ -871,7 +766,7 @@ def family_ties_def():
                                 ws[choicePerson_ind][10].value
                             ):
                                 Tk().withdraw()
-                                mesbox.showerror(
+                                msbox.showerror(
                                     "Увага!",
                                     f"{ws[chd_row_ind][5].value} {ws[chd_row_ind][6].value} \
                                                 \nне може бути Вашою дитиною!",
@@ -881,7 +776,7 @@ def family_ties_def():
                                 and ws[chd_row_ind][2].value != marriage
                             ):
                                 Tk().withdraw()
-                                mesbox.showerror(
+                                msbox.showerror(
                                     "Увага!",
                                     f"{ws[chd_row_ind][5].value} {ws[chd_row_ind][6].value} \
                                                 \nвже є чиєюсь дитиною!",
@@ -948,7 +843,7 @@ def family_ties_def():
                                 ws[father_row_ind][10].value
                             ):
                                 Tk().withdraw()
-                                mesbox.showerror(
+                                msbox.showerror(
                                     "Увага!",
                                     f"{ws[BS_row_ind][5].value} {ws[BS_row_ind][6].value} \
                                 \nне може бути Вашим братом чи сестрою!",
@@ -958,7 +853,7 @@ def family_ties_def():
                                 and ws[BS_row_ind][2].value != marriage
                             ):
                                 Tk().withdraw()
-                                mesbox.showerror(
+                                msbox.showerror(
                                     "Увага!",
                                     f"{ws[BS_row_ind][5].value} {ws[BS_row_ind][6].value} \
                                 \nвже є чиїмось братом чи сестрою!",
@@ -976,7 +871,7 @@ def family_ties_def():
                                 == ui.comboBox_choicePartner.findText("")
                             ):
                                 Tk().withdraw()
-                                mesbox.showerror(
+                                msbox.showerror(
                                     "Увага!",
                                     'Особа в списку "Брати/Сестри" співпадає \
                                 з якимось із членів сім\'ї!',
@@ -998,7 +893,7 @@ def family_ties_def():
                         and ws[choicePerson_ind][2].value != marriage
                     ):
                         Tk().withdraw()
-                        mesbox.showerror(
+                        msbox.showerror(
                             "Увага!",
                             f"{ws[choicePerson_ind][5].value} {ws[choicePerson_ind][6].value} \
                                         \nвже є чиїмось братом чи сестрою!",
@@ -1068,9 +963,9 @@ def family_ties_def():
 
                     setBS(marriage, father_row_ind)
 
-                wb.save("Family_lists.xlsx")
+                wb.save(WORKBOOK_NAME)
                 FamilyTies.close()
-                MainWindow.show()
+                main_window.show()
 
             varFam_t_tab_BS.clear()
             varFam_t_tab_Chd.clear()
@@ -1090,7 +985,7 @@ def review_def():
     Review.show()
 
     try:
-        wb = load_workbook("Family_lists.xlsx")
+        wb = load_workbook(WORKBOOK_NAME)
         # Dynamic clan list generation
         for i in range(len(wb.sheetnames)):
             ui.comboBox_choiceClan.insertItem(i, wb.sheetnames[i])
@@ -1128,7 +1023,7 @@ def review_def():
 
         def returnToMainWindow():
             Review.close()
-            MainWindow.show()
+            main_window.show()
 
         ui.pushButton_done.clicked.connect(returnToMainWindow)
 
@@ -1136,70 +1031,69 @@ def review_def():
         wb.close()
 
 
-def resizeImage(clan_Name, cell):
-    from PIL import Image
+def resize_image(file_path) -> tuple[int, int]:
+    image = Image.open(file_path)
+    width, height = image.size
+    max_width = max_height = 175
 
-    wb = load_workbook("Family_lists.xlsx")
-    ws = wb[clan_Name]
+    if width > height:
+        max_height = (max_width * height) // width
+    elif width < height:
+        max_width = (max_height * width) // height
 
-    image = Image.open(cell)
-    im_size = image.size
-
-    if im_size[0] > im_size[1]:
-        MAX_WIDTH = 175
-        MAX_HEIGHT = (MAX_WIDTH * im_size[1]) // im_size[0]
-    elif im_size[0] < im_size[1]:
-        MAX_HEIGHT = 175
-        MAX_WIDTH = (MAX_HEIGHT * im_size[0]) // im_size[1]
-    else:
-        MAX_WIDTH = MAX_HEIGHT = 175
-
-    wb.close()
-    return (MAX_WIDTH, MAX_HEIGHT)
+    return max_width, max_height
 
 
-# Set the lables in the My_card buttom
-def set_info_to_PB1():
-    wb = load_workbook("Family_lists.xlsx")
+def set_my_card_button_label() -> None:
+    wb = load_workbook(WORKBOOK_NAME)
     ws = wb[wb.sheetnames[0]]
 
-    clan_name = ws.title
-    first_name = ws["G1"].value
-    last_name = ws["F1"].value
-    ui.my_data = f"Рід: {clan_name}" f"\n{first_name} {last_name}"
-    ui.pushButton_1.setText(ui.my_data)
+    ui_main_window.pushButton_1.setText(
+        f'Рід: {ws.title}" f"\n{ws["G1"].value} {ws["F1"].value}'
+    )
 
-    if ws["A1"].value != None:
+    if ws["A1"].value:
         icon1 = QtGui.QIcon()
         icon1.addPixmap(
             QtGui.QPixmap(ws["A1"].value), QtGui.QIcon.Normal, QtGui.QIcon.Off
         )
-        ui.pushButton_1.setIcon(icon1)
+
+        ui_main_window.pushButton_1.setIcon(icon1)
 
     wb.close()
 
 
-# Condition of pressing buttons
-ui.pushButton_1.clicked.connect(my_card_def)
-ui.pushButton_2.clicked.connect(addRemove_clan_def)
-ui.pushButton_3.clicked.connect(add_edit_def)
-ui.pushButton_4.clicked.connect(family_ties_def)
-ui.pushButton_5.clicked.connect(review_def)
+my_card = MyCard()
+add_remove_clan = AddRemoveClan()
+add_edit = AddEdit()
 
-# Check for the entry into the program
+# Condition of pressing buttons.
+my_card.ui_window.image_Button.clicked.connect(my_card.set_avatar)
+my_card.ui_window.pushButton_done.clicked.connect(my_card.save)
+add_remove_clan.ui_window.pushButton_done.clicked.connect(add_remove_clan.save)
+
+add_edit.ui_window.comboBox_addEdit.currentIndexChanged.connect(
+    add_edit.fill_window
+)
+add_edit.ui_window.image_Button.clicked.connect(add_edit.set_avatar)
+add_edit.ui_window.pushButton_done.clicked.connect(add_edit.save)
+
+ui_main_window.pushButton_1.clicked.connect(my_card.openEvent)
+ui_main_window.pushButton_2.clicked.connect(add_remove_clan.openEvent)
+ui_main_window.pushButton_3.clicked.connect(add_edit.openEvent)
+ui_main_window.pushButton_4.clicked.connect(family_ties_def)
+ui_main_window.pushButton_5.clicked.connect(review_def)
+
 try:
-    counter = open("counter.txt", "r")
-    text_counter = counter.read()
-    if text_counter == "0":
-        my_card_def()
-    else:
-        set_info_to_PB1()
-
-    counter.close()
-    counter = open("counter.txt", "w")
-    counter.write("1")
+    wb = load_workbook(WORKBOOK_NAME)
+    set_my_card_button_label()
+except FileNotFoundError:
+    wb = Workbook()
+    ws = wb.active
+    ws.insert_rows(0)
+    wb.save(WORKBOOK_NAME)
+    my_card.openEvent()
 finally:
-    counter.close()
-
+    wb.close()
 
 app.exec()
