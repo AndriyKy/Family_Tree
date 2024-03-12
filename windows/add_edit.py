@@ -705,8 +705,8 @@ class Ui_AddEdit(object):
             _translate("AddEdit", "Ім'я по батькові")
         )
         self.label_sex.setText(_translate("AddEdit", "Стать"))
-        self.comboBox_sex.setItemText(0, _translate("AddEdit", " Чоловіча"))
-        self.comboBox_sex.setItemText(1, _translate("AddEdit", " Жіноча"))
+        self.comboBox_sex.setItemText(0, _translate("AddEdit", "Чоловіча"))
+        self.comboBox_sex.setItemText(1, _translate("AddEdit", "Жіноча"))
         self.label_yearOfBirth.setText(
             _translate(
                 "AddEdit",

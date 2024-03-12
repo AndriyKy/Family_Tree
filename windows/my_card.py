@@ -618,8 +618,8 @@ class Ui_MyCard(object):
         )
         self.label_patronymic.setText(_translate("MyCard", "Ім'я по батькові"))
         self.label_sex.setText(_translate("MyCard", "Стать"))
-        self.comboBox_sex.setItemText(0, _translate("MyCard", " Чоловіча"))
-        self.comboBox_sex.setItemText(1, _translate("MyCard", " Жіноча"))
+        self.comboBox_sex.setItemText(0, _translate("MyCard", "Чоловіча"))
+        self.comboBox_sex.setItemText(1, _translate("MyCard", "Жіноча"))
         self.label_yearOfBirth.setText(
             _translate(
                 "MyCard",
