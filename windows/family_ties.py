@@ -278,7 +278,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}\n"
             "\n"
@@ -287,7 +286,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}\n"
             "\n"
@@ -296,7 +294,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}"
         )
@@ -396,7 +393,6 @@ class Ui_FamilyTies(object):
             "background-position: center bottom;\n"
             "background-repeat: no-repeat;\n"
             "background-attachment: fixed;\n"
-            "background-size: cover;\n"
             "border: none;"
         )
         self.pushButton_disable.setText("")
@@ -514,7 +510,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}\n"
             "\n"
@@ -523,7 +518,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}\n"
             "\n"
@@ -532,7 +526,6 @@ class Ui_FamilyTies(object):
             "    background-position: center center;\n"
             "    background-repeat: no-repeat;\n"
             "    background-attachment: fixed;\n"
-            "    background-size: cover;\n"
             "    border: none;\n"
             "}"
         )
