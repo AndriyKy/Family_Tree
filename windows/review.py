@@ -18,7 +18,7 @@ class Ui_Review(object):
         Review.setMinimumSize(QtCore.QSize(640, 400))
         icon = QtGui.QIcon()
         icon.addPixmap(
-            QtGui.QPixmap("Icons/Review.ico"),
+            QtGui.QPixmap(join_path("icons", "Review.ico")),
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
