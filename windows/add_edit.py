@@ -60,16 +60,16 @@ class Ui_AddEdit(object):
         self.horizontalLayout_6.addWidget(
             self.label_choiceClan, 0, QtCore.Qt.AlignVCenter
         )
-        self.comboBox_choiceClan = QtWidgets.QComboBox(self.frame_addSelClan)
-        self.comboBox_choiceClan.setMinimumSize(QtCore.QSize(222, 31))
-        self.comboBox_choiceClan.setMaximumSize(QtCore.QSize(222, 31))
+        self.comboBox_clan = QtWidgets.QComboBox(self.frame_addSelClan)
+        self.comboBox_clan.setMinimumSize(QtCore.QSize(222, 31))
+        self.comboBox_clan.setMaximumSize(QtCore.QSize(222, 31))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choiceClan.setFont(font)
-        self.comboBox_choiceClan.setStyleSheet(
+        self.comboBox_clan.setFont(font)
+        self.comboBox_clan.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -80,8 +80,8 @@ class Ui_AddEdit(object):
             "selection-background-color: white;\n"
             "selection-color:rgba(21, 22, 26, 255);"
         )
-        self.comboBox_choiceClan.setObjectName("comboBox_choiceClan")
-        self.horizontalLayout_6.addWidget(self.comboBox_choiceClan)
+        self.comboBox_clan.setObjectName("comboBox_clan")
+        self.horizontalLayout_6.addWidget(self.comboBox_clan)
         spacerItem = QtWidgets.QSpacerItem(
             122,
             20,

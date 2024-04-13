@@ -110,14 +110,14 @@ class Ui_AddRemoveClan(object):
         )
         self.label_removeClan.setObjectName("label_removeClan")
         self.verticalLayout.addWidget(self.label_removeClan)
-        self.comboBox_choiceRemoveClan = QtWidgets.QComboBox(self.frame_left)
-        self.comboBox_choiceRemoveClan.setMinimumSize(QtCore.QSize(222, 30))
-        self.comboBox_choiceRemoveClan.setMaximumSize(QtCore.QSize(222, 30))
+        self.comboBox_RemoveClan = QtWidgets.QComboBox(self.frame_left)
+        self.comboBox_RemoveClan.setMinimumSize(QtCore.QSize(222, 30))
+        self.comboBox_RemoveClan.setMaximumSize(QtCore.QSize(222, 30))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(14)
-        self.comboBox_choiceRemoveClan.setFont(font)
-        self.comboBox_choiceRemoveClan.setStyleSheet(
+        self.comboBox_RemoveClan.setFont(font)
+        self.comboBox_RemoveClan.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -129,12 +129,10 @@ class Ui_AddRemoveClan(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choiceRemoveClan.setObjectName(
-            "comboBox_choiceRemoveClan"
-        )
-        self.comboBox_choiceRemoveClan.addItem("")
-        self.comboBox_choiceRemoveClan.setItemText(0, "")
-        self.verticalLayout.addWidget(self.comboBox_choiceRemoveClan)
+        self.comboBox_RemoveClan.setObjectName("comboBox_RemoveClan")
+        self.comboBox_RemoveClan.addItem("")
+        self.comboBox_RemoveClan.setItemText(0, "")
+        self.verticalLayout.addWidget(self.comboBox_RemoveClan)
         self.horizontalLayout_2.addWidget(self.frame_left)
         self.line = QtWidgets.QFrame(self.main_frame)
         self.line.setMinimumSize(QtCore.QSize(0, 160))

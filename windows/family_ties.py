@@ -17,8 +17,8 @@ class Ui_FamilyTies(object):
     def setupUi(self, FamilyTies):
         FamilyTies.setObjectName("FamilyTies")
         FamilyTies.resize(875, 590)
-        FamilyTies.setMinimumSize(QtCore.QSize(875, 590))
-        FamilyTies.setMaximumSize(QtCore.QSize(875, 590))
+        FamilyTies.setMinimumSize(QtCore.QSize(875, 400))
+        FamilyTies.setMaximumSize(QtCore.QSize(875, 400))
         icon = QtGui.QIcon()
         icon.addPixmap(
             QtGui.QPixmap(join_path("icons", "Family.ico")),
@@ -61,16 +61,16 @@ class Ui_FamilyTies(object):
         )
         self.label_clan.setObjectName("label_clan")
         self.horizontalLayout_3.addWidget(self.label_clan)
-        self.comboBox_choiceClan = QtWidgets.QComboBox(self.frame_choiceClan)
-        self.comboBox_choiceClan.setMinimumSize(QtCore.QSize(221, 32))
-        self.comboBox_choiceClan.setMaximumSize(QtCore.QSize(221, 32))
+        self.comboBox_clan = QtWidgets.QComboBox(self.frame_choiceClan)
+        self.comboBox_clan.setMinimumSize(QtCore.QSize(221, 32))
+        self.comboBox_clan.setMaximumSize(QtCore.QSize(221, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choiceClan.setFont(font)
-        self.comboBox_choiceClan.setStyleSheet(
+        self.comboBox_clan.setFont(font)
+        self.comboBox_clan.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -82,8 +82,8 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choiceClan.setObjectName("comboBox_choiceClan")
-        self.horizontalLayout_3.addWidget(self.comboBox_choiceClan)
+        self.comboBox_clan.setObjectName("comboBox_clan")
+        self.horizontalLayout_3.addWidget(self.comboBox_clan)
         spacerItem = QtWidgets.QSpacerItem(
             30, 5, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum
         )
@@ -131,16 +131,16 @@ class Ui_FamilyTies(object):
         )
         self.label_father.setObjectName("label_father")
         self.verticalLayout_3.addWidget(self.label_father)
-        self.comboBox_choiceFather = QtWidgets.QComboBox(self.left_frame_1)
-        self.comboBox_choiceFather.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choiceFather.setMaximumSize(QtCore.QSize(410, 32))
+        self.comboBox_father = QtWidgets.QComboBox(self.left_frame_1)
+        self.comboBox_father.setMinimumSize(QtCore.QSize(410, 32))
+        self.comboBox_father.setMaximumSize(QtCore.QSize(410, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choiceFather.setFont(font)
-        self.comboBox_choiceFather.setStyleSheet(
+        self.comboBox_father.setFont(font)
+        self.comboBox_father.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -152,8 +152,8 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choiceFather.setObjectName("comboBox_choiceFather")
-        self.verticalLayout_3.addWidget(self.comboBox_choiceFather)
+        self.comboBox_father.setObjectName("comboBox_father")
+        self.verticalLayout_3.addWidget(self.comboBox_father)
         self.horizontalLayout.addWidget(self.left_frame_1)
         self.right_frame_1 = QtWidgets.QFrame(self.frame_top)
         self.right_frame_1.setMaximumSize(QtCore.QSize(412, 16777215))
@@ -178,16 +178,16 @@ class Ui_FamilyTies(object):
         )
         self.label_mother.setObjectName("label_mother")
         self.verticalLayout_4.addWidget(self.label_mother)
-        self.comboBox_choiceMother = QtWidgets.QComboBox(self.right_frame_1)
-        self.comboBox_choiceMother.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choiceMother.setMaximumSize(QtCore.QSize(410, 32))
+        self.comboBox_mother = QtWidgets.QComboBox(self.right_frame_1)
+        self.comboBox_mother.setMinimumSize(QtCore.QSize(410, 32))
+        self.comboBox_mother.setMaximumSize(QtCore.QSize(410, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choiceMother.setFont(font)
-        self.comboBox_choiceMother.setStyleSheet(
+        self.comboBox_mother.setFont(font)
+        self.comboBox_mother.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -199,8 +199,8 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choiceMother.setObjectName("comboBox_choiceMother")
-        self.verticalLayout_4.addWidget(self.comboBox_choiceMother)
+        self.comboBox_mother.setObjectName("comboBox_mother")
+        self.verticalLayout_4.addWidget(self.comboBox_mother)
         self.horizontalLayout.addWidget(self.right_frame_1)
         self.verticalLayout_2.addWidget(self.frame_top)
         self.line_horTop = QtWidgets.QFrame(self.main_frame)
@@ -243,16 +243,16 @@ class Ui_FamilyTies(object):
         )
         self.label_BS.setObjectName("label_BS")
         self.verticalLayout_6.addWidget(self.label_BS)
-        self.comboBox_choiceBS = QtWidgets.QComboBox(self.left_frame_2)
-        self.comboBox_choiceBS.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choiceBS.setMaximumSize(QtCore.QSize(410, 32))
+        self.comboBox_siblings = QtWidgets.QComboBox(self.left_frame_2)
+        self.comboBox_siblings.setMinimumSize(QtCore.QSize(410, 32))
+        self.comboBox_siblings.setMaximumSize(QtCore.QSize(410, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choiceBS.setFont(font)
-        self.comboBox_choiceBS.setStyleSheet(
+        self.comboBox_siblings.setFont(font)
+        self.comboBox_siblings.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -264,15 +264,15 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choiceBS.setObjectName("comboBox_choiceBS")
-        self.verticalLayout_6.addWidget(self.comboBox_choiceBS)
-        self.pushButton_addBS = QtWidgets.QPushButton(self.left_frame_2)
-        self.pushButton_addBS.setMinimumSize(QtCore.QSize(30, 45))
-        self.pushButton_addBS.setMaximumSize(QtCore.QSize(30, 45))
-        self.pushButton_addBS.setCursor(
+        self.comboBox_siblings.setObjectName("comboBox_BS")
+        self.verticalLayout_6.addWidget(self.comboBox_siblings)
+        self.pushButton_addSiblings = QtWidgets.QPushButton(self.left_frame_2)
+        self.pushButton_addSiblings.setMinimumSize(QtCore.QSize(30, 45))
+        self.pushButton_addSiblings.setMaximumSize(QtCore.QSize(30, 45))
+        self.pushButton_addSiblings.setCursor(
             QtGui.QCursor(QtCore.Qt.PointingHandCursor)
         )
-        self.pushButton_addBS.setStyleSheet(
+        self.pushButton_addSiblings.setStyleSheet(
             "QPushButton {\n"
             f"    background-image: url({join_path('icons', 'Add.ico')});\n"
             "    background-position: center center;\n"
@@ -297,31 +297,31 @@ class Ui_FamilyTies(object):
             "    border: none;\n"
             "}"
         )
-        self.pushButton_addBS.setText("")
-        self.pushButton_addBS.setObjectName("pushButton_addBS")
+        self.pushButton_addSiblings.setText("")
+        self.pushButton_addSiblings.setObjectName("pushButton_addBS")
         self.verticalLayout_6.addWidget(
-            self.pushButton_addBS, 0, QtCore.Qt.AlignHCenter
+            self.pushButton_addSiblings, 0, QtCore.Qt.AlignHCenter
         )
-        self.tableWidget_BS = QtWidgets.QTableWidget(self.left_frame_2)
-        self.tableWidget_BS.setMaximumSize(QtCore.QSize(410, 73))
+        self.tableWidget_siblings = QtWidgets.QTableWidget(self.left_frame_2)
+        self.tableWidget_siblings.setMaximumSize(QtCore.QSize(410, 73))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
-        self.tableWidget_BS.setFont(font)
-        self.tableWidget_BS.setStyleSheet(
+        self.tableWidget_siblings.setFont(font)
+        self.tableWidget_siblings.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "gridline-color: rgb(255, 255, 255);"
         )
-        self.tableWidget_BS.setVerticalScrollBarPolicy(
+        self.tableWidget_siblings.setVerticalScrollBarPolicy(
             QtCore.Qt.ScrollBarAlwaysOn
         )
-        self.tableWidget_BS.setRowCount(0)
-        self.tableWidget_BS.setColumnCount(1)
-        self.tableWidget_BS.setObjectName("tableWidget_BS")
-        self.tableWidget_BS.horizontalHeader().setVisible(False)
-        self.tableWidget_BS.horizontalHeader().setDefaultSectionSize(375)
-        self.verticalLayout_6.addWidget(self.tableWidget_BS)
+        self.tableWidget_siblings.setRowCount(0)
+        self.tableWidget_siblings.setColumnCount(1)
+        self.tableWidget_siblings.setObjectName("tableWidget_BS")
+        self.tableWidget_siblings.horizontalHeader().setVisible(False)
+        self.tableWidget_siblings.horizontalHeader().setDefaultSectionSize(375)
+        self.verticalLayout_6.addWidget(self.tableWidget_siblings)
         self.horizontalLayout_2.addWidget(
             self.left_frame_2, 0, QtCore.Qt.AlignTop
         )
@@ -359,16 +359,16 @@ class Ui_FamilyTies(object):
         )
         self.label_petson.setObjectName("label_petson")
         self.verticalLayout_5.addWidget(self.label_petson)
-        self.comboBox_choicePerson = QtWidgets.QComboBox(self.right_frame_2)
-        self.comboBox_choicePerson.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choicePerson.setMaximumSize(QtCore.QSize(410, 32))
+        self.comboBox_person = QtWidgets.QComboBox(self.right_frame_2)
+        self.comboBox_person.setMinimumSize(QtCore.QSize(410, 32))
+        self.comboBox_person.setMaximumSize(QtCore.QSize(410, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choicePerson.setFont(font)
-        self.comboBox_choicePerson.setStyleSheet(
+        self.comboBox_person.setFont(font)
+        self.comboBox_person.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -380,10 +380,10 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choicePerson.setObjectName("comboBox_choicePerson")
-        self.comboBox_choicePerson.addItem("")
-        self.comboBox_choicePerson.setItemText(0, "")
-        self.verticalLayout_5.addWidget(self.comboBox_choicePerson)
+        self.comboBox_person.setObjectName("comboBox_person")
+        self.comboBox_person.addItem("")
+        self.comboBox_person.setItemText(0, "")
+        self.verticalLayout_5.addWidget(self.comboBox_person)
         self.pushButton_disable = QtWidgets.QPushButton(self.right_frame_2)
         self.pushButton_disable.setEnabled(False)
         self.pushButton_disable.setMinimumSize(QtCore.QSize(30, 37))
@@ -422,16 +422,16 @@ class Ui_FamilyTies(object):
         )
         self.label_partner.setObjectName("label_partner")
         self.verticalLayout_5.addWidget(self.label_partner)
-        self.comboBox_choicePartner = QtWidgets.QComboBox(self.right_frame_2)
-        self.comboBox_choicePartner.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choicePartner.setMaximumSize(QtCore.QSize(410, 32))
+        self.comboBox_partner = QtWidgets.QComboBox(self.right_frame_2)
+        self.comboBox_partner.setMinimumSize(QtCore.QSize(410, 32))
+        self.comboBox_partner.setMaximumSize(QtCore.QSize(410, 32))
         font = QtGui.QFont()
         font.setFamily("Monotype Corsiva")
         font.setPointSize(15)
         font.setBold(False)
         font.setWeight(50)
-        self.comboBox_choicePartner.setFont(font)
-        self.comboBox_choicePartner.setStyleSheet(
+        self.comboBox_partner.setFont(font)
+        self.comboBox_partner.setStyleSheet(
             "background-color: rgba(21, 22, 26, 255);\n"
             "color: rgb(190, 190, 190);\n"
             "border-radius: 10px;\n"
@@ -443,8 +443,8 @@ class Ui_FamilyTies(object):
             "selection-color:rgba(21, 22, 26, 255);\n"
             ""
         )
-        self.comboBox_choicePartner.setObjectName("comboBox_choicePartner")
-        self.verticalLayout_5.addWidget(self.comboBox_choicePartner)
+        self.comboBox_partner.setObjectName("comboBox_partner")
+        self.verticalLayout_5.addWidget(self.comboBox_partner)
         self.horizontalLayout_2.addWidget(self.right_frame_2)
         self.verticalLayout_2.addWidget(self.frame_center)
         self.line_horCenter = QtWidgets.QFrame(self.main_frame)
@@ -464,105 +464,6 @@ class Ui_FamilyTies(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.label_children = QtWidgets.QLabel(self.frame_bottom)
-        font = QtGui.QFont()
-        font.setFamily("Segoe Print")
-        font.setPointSize(12)
-        self.label_children.setFont(font)
-        self.label_children.setStyleSheet("color: white;")
-        self.label_children.setAlignment(
-            QtCore.Qt.AlignBottom | QtCore.Qt.AlignHCenter
-        )
-        self.label_children.setObjectName("label_children")
-        self.verticalLayout_9.addWidget(self.label_children)
-        self.comboBox_choiceChildren = QtWidgets.QComboBox(self.frame_bottom)
-        self.comboBox_choiceChildren.setMinimumSize(QtCore.QSize(410, 32))
-        self.comboBox_choiceChildren.setMaximumSize(QtCore.QSize(410, 32))
-        font = QtGui.QFont()
-        font.setFamily("Monotype Corsiva")
-        font.setPointSize(15)
-        font.setBold(False)
-        font.setWeight(50)
-        self.comboBox_choiceChildren.setFont(font)
-        self.comboBox_choiceChildren.setStyleSheet(
-            "background-color: rgba(21, 22, 26, 255);\n"
-            "color: rgb(190, 190, 190);\n"
-            "border-radius: 10px;\n"
-            "border-bottom: 2px solid rgba(80, 80, 85, 255);\n"
-            "border-right: 2px solid rgba(80, 80, 85, 255);\n"
-            "border-top: 2px solid rgba(80, 80, 85, 255);\n"
-            "border-left: 2px solid rgba(80, 80, 85, 255);\n"
-            "selection-background-color: white;\n"
-            "selection-color:rgba(21, 22, 26, 255);\n"
-            ""
-        )
-        self.comboBox_choiceChildren.setObjectName("comboBox_choiceChildren")
-        self.verticalLayout_9.addWidget(self.comboBox_choiceChildren)
-        self.pushButton_addChildren = QtWidgets.QPushButton(self.frame_bottom)
-        self.pushButton_addChildren.setMinimumSize(QtCore.QSize(30, 45))
-        self.pushButton_addChildren.setMaximumSize(QtCore.QSize(30, 45))
-        self.pushButton_addChildren.setCursor(
-            QtGui.QCursor(QtCore.Qt.PointingHandCursor)
-        )
-        self.pushButton_addChildren.setStyleSheet(
-            "QPushButton {\n"
-            f"    background-image: url({join_path('icons', 'Add.ico')});\n"
-            "    background-position: center center;\n"
-            "    background-repeat: no-repeat;\n"
-            "    background-attachment: fixed;\n"
-            "    border: none;\n"
-            "}\n"
-            "\n"
-            "QPushButton:hover {\n"
-            f"    background-image: url({join_path('icons', 'Add_color.ico')});\n"
-            "    background-position: center center;\n"
-            "    background-repeat: no-repeat;\n"
-            "    background-attachment: fixed;\n"
-            "    border: none;\n"
-            "}\n"
-            "\n"
-            "QPushButton:pressed {\n"
-            f"    background-image: url({join_path('icons', 'Add_color_pressed.ico')});\n"
-            "    background-position: center center;\n"
-            "    background-repeat: no-repeat;\n"
-            "    background-attachment: fixed;\n"
-            "    border: none;\n"
-            "}"
-        )
-        self.pushButton_addChildren.setText("")
-        self.pushButton_addChildren.setObjectName("pushButton_addChildren")
-        self.verticalLayout_9.addWidget(
-            self.pushButton_addChildren, 0, QtCore.Qt.AlignHCenter
-        )
-        self.tableWidget_choiceChildren = QtWidgets.QTableWidget(
-            self.frame_bottom
-        )
-        self.tableWidget_choiceChildren.setMaximumSize(QtCore.QSize(410, 73))
-        font = QtGui.QFont()
-        font.setFamily("Times New Roman")
-        font.setPointSize(12)
-        self.tableWidget_choiceChildren.setFont(font)
-        self.tableWidget_choiceChildren.setStyleSheet(
-            "background-color: rgba(21, 22, 26, 255);\n"
-            "color: rgb(190, 190, 190);\n"
-            "gridline-color: rgb(255, 255, 255);"
-        )
-        self.tableWidget_choiceChildren.setVerticalScrollBarPolicy(
-            QtCore.Qt.ScrollBarAlwaysOn
-        )
-        self.tableWidget_choiceChildren.setRowCount(0)
-        self.tableWidget_choiceChildren.setColumnCount(1)
-        self.tableWidget_choiceChildren.setObjectName(
-            "tableWidget_choiceChildren"
-        )
-        self.tableWidget_choiceChildren.horizontalHeader().setVisible(False)
-        self.tableWidget_choiceChildren.horizontalHeader().setDefaultSectionSize(
-            375
-        )
-        self.verticalLayout_9.addWidget(self.tableWidget_choiceChildren)
-        self.verticalLayout_2.addWidget(
-            self.frame_bottom, 0, QtCore.Qt.AlignHCenter
-        )
         self.line_horBottom = QtWidgets.QFrame(self.main_frame)
         self.line_horBottom.setMinimumSize(QtCore.QSize(270, 4))
         self.line_horBottom.setMaximumSize(QtCore.QSize(270, 4))
@@ -630,7 +531,6 @@ class Ui_FamilyTies(object):
             )
         )
         self.label_partner.setText(_translate("FamilyTies", "Партнер:"))
-        self.label_children.setText(_translate("FamilyTies", "Діти:"))
         self.pushButton_done.setText(_translate("FamilyTies", "Готово"))
 
 
