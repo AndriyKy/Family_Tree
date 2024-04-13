@@ -56,8 +56,6 @@ class AddEdit(WindowConstructor):
             self.ui_window.lineEdit_placeOfBirth.setText(row[11].value)
             self.ui_window.lineEdit_placeOfDeath.setText(row[12].value)
             self.ui_window.plainTextEdit_addinfo.setPlainText(row[13].value)
-
-            # Output the thumbnail to the image_Button if the cell is not empty
             self.set_icon(row[0].value or join_path("icons", "Add_image.png"))
 
     def fill_clans_and_members(self) -> None:
