@@ -189,6 +189,7 @@ class Ui_AddEdit(object):
         self.center_frame_1.setMaximumSize(QtCore.QSize(224, 183))
         self.center_frame_1.setObjectName("center_frame_1")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.center_frame_1)
+        self.verticalLayout_3.setAlignment(QtCore.Qt.AlignTop)
         self.verticalLayout_3.setContentsMargins(5, 0, -1, -1)
         self.verticalLayout_3.setSpacing(2)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -677,6 +678,11 @@ class Ui_AddEdit(object):
             self.main_frame, 0, QtCore.Qt.AlignVCenter
         )
 
+        as_needed = QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded
+        self.comboBox_clan.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_addEdit.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_sex.view().setVerticalScrollBarPolicy(as_needed)
+
         self.retranslateUi(AddEdit)
         QtCore.QMetaObject.connectSlotsByName(AddEdit)
 
@@ -694,7 +700,7 @@ class Ui_AddEdit(object):
         self.label_note.setText(
             _translate(
                 "AddEdit",
-                '<html><head/><body><p>Жіноче прізвище записується у форматі дівоче-чоловіче прізвище через дефіс. Дівоче прізвище обовязково йде першим </p><p><span style=" color:#fd4837;">*</span> Обов\'язкові поля</p></body></html>',
+                '<html><head/><body><p>Жіноче прізвище записується у форматі дівоче-чоловіче прізвище через дефіс. </p><p><span style=" color:#fd4837;">*</span> Обов\'язкові поля</p></body></html>',
             )
         )
         self.label_fname.setText(

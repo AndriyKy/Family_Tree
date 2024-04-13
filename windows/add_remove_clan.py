@@ -196,6 +196,9 @@ class Ui_AddRemoveClan(object):
             self.pushButton_done, 0, QtCore.Qt.AlignHCenter
         )
 
+        as_needed = QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded
+        self.comboBox_RemoveClan.view().setVerticalScrollBarPolicy(as_needed)
+
         self.retranslateUi(AddRemoveClan)
         QtCore.QMetaObject.connectSlotsByName(AddRemoveClan)
 

@@ -303,6 +303,9 @@ class Ui_FamilyTies(object):
             self.pushButton_addSiblings, 0, QtCore.Qt.AlignHCenter
         )
         self.tableWidget_siblings = QtWidgets.QTableWidget(self.left_frame_2)
+        self.tableWidget_siblings.setEditTriggers(
+            QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers
+        )
         self.tableWidget_siblings.setMaximumSize(QtCore.QSize(410, 73))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -513,6 +516,14 @@ class Ui_FamilyTies(object):
             self.pushButton_done, 0, QtCore.Qt.AlignHCenter
         )
         self.verticalLayout.addWidget(self.main_frame)
+
+        as_needed = QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded
+        self.comboBox_clan.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_father.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_mother.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_person.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_partner.view().setVerticalScrollBarPolicy(as_needed)
+        self.comboBox_siblings.view().setVerticalScrollBarPolicy(as_needed)
 
         self.retranslateUi(FamilyTies)
         QtCore.QMetaObject.connectSlotsByName(FamilyTies)
