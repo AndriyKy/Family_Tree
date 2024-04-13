@@ -54,16 +54,16 @@ class UIMainWindow(object):
         )
         self.verticalLayout.setContentsMargins(10, 10, 10, 5)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.pushButton_1 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_1.setEnabled(True)
-        self.pushButton_1.setMinimumSize(QtCore.QSize(185, 50))
-        self.pushButton_1.setMaximumSize(QtCore.QSize(0, 50))
+        self.pushButton_myCard = QtWidgets.QPushButton(self.verticalGroupBox)
+        self.pushButton_myCard.setEnabled(True)
+        self.pushButton_myCard.setMinimumSize(QtCore.QSize(185, 50))
+        self.pushButton_myCard.setMaximumSize(QtCore.QSize(0, 50))
         font = QtGui.QFont()
         font.setFamily("Corbel")
         font.setPointSize(11)
         font.setItalic(True)
-        self.pushButton_1.setFont(font)
-        self.pushButton_1.setStyleSheet(
+        self.pushButton_myCard.setFont(font)
+        self.pushButton_myCard.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: rgb(80, 80, 85);\n"
@@ -91,17 +91,19 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_1.setIcon(icon1)
-        self.pushButton_1.setIconSize(QtCore.QSize(35, 35))
-        self.pushButton_1.setObjectName("pushButton_1")
-        self.verticalLayout.addWidget(self.pushButton_1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(150, 35))
+        self.pushButton_myCard.setIcon(icon1)
+        self.pushButton_myCard.setIconSize(QtCore.QSize(35, 35))
+        self.pushButton_myCard.setObjectName("pushButton_1")
+        self.verticalLayout.addWidget(self.pushButton_myCard)
+        self.pushButton_addRemoveClan = QtWidgets.QPushButton(
+            self.verticalGroupBox
+        )
+        self.pushButton_addRemoveClan.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(10)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet(
+        self.pushButton_addRemoveClan.setFont(font)
+        self.pushButton_addRemoveClan.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: none;\n"
@@ -128,17 +130,17 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_2.setIcon(icon2)
-        self.pushButton_2.setIconSize(QtCore.QSize(20, 20))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_3.setMinimumSize(QtCore.QSize(150, 35))
+        self.pushButton_addRemoveClan.setIcon(icon2)
+        self.pushButton_addRemoveClan.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton_addRemoveClan.setObjectName("pushButton_2")
+        self.verticalLayout.addWidget(self.pushButton_addRemoveClan)
+        self.pushButton_addEdit = QtWidgets.QPushButton(self.verticalGroupBox)
+        self.pushButton_addEdit.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(10)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet(
+        self.pushButton_addEdit.setFont(font)
+        self.pushButton_addEdit.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: none;\n"
@@ -165,17 +167,19 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_3.setIcon(icon3)
-        self.pushButton_3.setIconSize(QtCore.QSize(20, 20))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout.addWidget(self.pushButton_3)
-        self.pushButton_4 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_4.setMinimumSize(QtCore.QSize(150, 35))
+        self.pushButton_addEdit.setIcon(icon3)
+        self.pushButton_addEdit.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton_addEdit.setObjectName("pushButton_3")
+        self.verticalLayout.addWidget(self.pushButton_addEdit)
+        self.pushButton_familyTies = QtWidgets.QPushButton(
+            self.verticalGroupBox
+        )
+        self.pushButton_familyTies.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(10)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet(
+        self.pushButton_familyTies.setFont(font)
+        self.pushButton_familyTies.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: none;\n"
@@ -202,17 +206,17 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_4.setIcon(icon4)
-        self.pushButton_4.setIconSize(QtCore.QSize(20, 20))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout.addWidget(self.pushButton_4)
-        self.pushButton_5 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(150, 35))
+        self.pushButton_familyTies.setIcon(icon4)
+        self.pushButton_familyTies.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton_familyTies.setObjectName("pushButton_4")
+        self.verticalLayout.addWidget(self.pushButton_familyTies)
+        self.pushButton_review = QtWidgets.QPushButton(self.verticalGroupBox)
+        self.pushButton_review.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(10)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setStyleSheet(
+        self.pushButton_review.setFont(font)
+        self.pushButton_review.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: none;\n"
@@ -239,10 +243,10 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_5.setIcon(icon5)
-        self.pushButton_5.setIconSize(QtCore.QSize(20, 20))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.verticalLayout.addWidget(self.pushButton_5)
+        self.pushButton_review.setIcon(icon5)
+        self.pushButton_review.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton_review.setObjectName("pushButton_5")
+        self.verticalLayout.addWidget(self.pushButton_review)
         self.pushButton_6 = QtWidgets.QPushButton(self.verticalGroupBox)
         self.pushButton_6.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
@@ -298,13 +302,21 @@ class UIMainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Family Tree"))
-        self.pushButton_1.setText(
+        self.pushButton_myCard.setText(
             _translate("MainWindow", "Рід: прізвище роду\n" "Ім'я Прізвище")
         )
-        self.pushButton_2.setText(_translate("MainWindow", "Родини"))
-        self.pushButton_3.setText(_translate("MainWindow", "Додати/змінити "))
-        self.pushButton_4.setText(_translate("MainWindow", "Сімейні зв'язки"))
-        self.pushButton_5.setText(_translate("MainWindow", "Переглянути "))
+        self.pushButton_addRemoveClan.setText(
+            _translate("MainWindow", "Родини")
+        )
+        self.pushButton_addEdit.setText(
+            _translate("MainWindow", "Додати/змінити ")
+        )
+        self.pushButton_familyTies.setText(
+            _translate("MainWindow", "Сімейні зв'язки")
+        )
+        self.pushButton_review.setText(
+            _translate("MainWindow", "Переглянути ")
+        )
         self.pushButton_6.setText(_translate("MainWindow", "Діаграма"))
 
 
