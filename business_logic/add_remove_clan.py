@@ -29,7 +29,7 @@ class AddRemoveClan(WindowConstructor):
         if clan_name:
             if search(r"[:\/\*\?[\]<>|]", clan_name):
                 msbox.showerror(
-                    "Увага!",
+                    "Помилка!",
                     "Заборонено вводити такі символи: / \ * ? [ ] < > : |",
                 )
                 return
@@ -37,7 +37,7 @@ class AddRemoveClan(WindowConstructor):
                 self.workbook.create_sheet(clan_name)
         if clan_to_remove:
             if len(self.workbook.sheetnames) == 1:
-                msbox.showerror("Увага!", "Неможливо видалити єдиний рід!")
+                msbox.showerror("Помилка!", "Неможливо видалити єдиний рід!")
                 return
             else:
                 del self.workbook[clan_to_remove]
