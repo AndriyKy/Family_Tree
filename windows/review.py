@@ -92,6 +92,9 @@ class Ui_Review(object):
         self.line.setObjectName("line")
         self.verticalLayout_2.addWidget(self.line)
         self.tableWidget = QtWidgets.QTableWidget(self.main_frame)
+        self.tableWidget.setEditTriggers(
+            QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers
+        )
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
