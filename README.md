@@ -1,19 +1,25 @@
 # Family tree
-<strong>Family tree</strong> - a program for creating and editing data of your kind.
+<strong>Family tree</strong> is a computer program with a graphical interface for creating and editing your family data.
 
-![Main_window](/Screenshots/Main_window.png)
+![Main_window](/screenshots/Main_window.png)
 
-More screenshots at the [link](/Screenshots/).
+More screenshots are available [here](/screenshots/).
 
 ## Prerequisites
-In order for the program to work, you need to install several additional modules: PyQt5, openpyxl, tkinter and Pillow. They can be installed with the following command:
+> **NOTE:** Python version >3.8 is required.
+
 ```bash
-pip install PyQt5, openpyxl, tkinter, Pillow 
+python -m venv .venv
+source .venv/bin/activate
+export PYTHONPATH="$(pwd):$(pwd)/windows:$(pwd)/business_logic"
+pip install -r requirements.txt 
 ```
 
+To install `tkinter` on Linux, please, follow [this instruction](https://tecadmin.net/how-to-install-python-tkinter-on-linux/).
+
 ## Getting started
-You can clone the program using the command below or download and unzip the archive.
+You can clone the repo using the command below or download and unzip the archive.
 ```bash
 git clone https://github.com/AndriyKy/Family_Tree.git
 ```
-To run the program, simply run the *main.py* file.
+To launch the application, simply run the [main.py](/main.py) file.
