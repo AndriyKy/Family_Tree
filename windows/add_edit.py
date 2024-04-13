@@ -13,7 +13,7 @@ from os.path import join as join_path
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_AddEdit(object):
+class UIAddEdit(object):
     def setupUi(self, AddEdit):
         AddEdit.setObjectName("AddEdit")
         AddEdit.resize(685, 650)
@@ -737,7 +737,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     AddEdit = QtWidgets.QDialog()
-    ui = Ui_AddEdit()
+    ui = UIAddEdit()
     ui.setupUi(AddEdit)
     AddEdit.show()
     sys.exit(app.exec_())

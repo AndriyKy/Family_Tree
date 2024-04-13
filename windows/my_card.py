@@ -13,7 +13,7 @@ from os.path import join as join_path
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MyCard(object):
+class UIMyCard(object):
     def setupUi(self, MyCard):
         MyCard.setObjectName("MyCard")
         MyCard.resize(685, 570)
@@ -663,7 +663,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MyCard = QtWidgets.QDialog()
-    ui = Ui_MyCard()
+    ui = UIMyCard()
     ui.setupUi(MyCard)
     MyCard.show()
     sys.exit(app.exec_())

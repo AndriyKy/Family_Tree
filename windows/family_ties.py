@@ -13,7 +13,7 @@ from os.path import join as join_path
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_FamilyTies(object):
+class UIFamilyTies(object):
     def setupUi(self, FamilyTies):
         FamilyTies.setObjectName("FamilyTies")
         FamilyTies.resize(875, 590)
@@ -550,7 +550,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     FamilyTies = QtWidgets.QDialog()
-    ui = Ui_FamilyTies()
+    ui = UIFamilyTies()
     ui.setupUi(FamilyTies)
     FamilyTies.show()
     sys.exit(app.exec_())

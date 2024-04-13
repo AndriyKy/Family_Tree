@@ -13,7 +13,7 @@ from os.path import join as join_path
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Review(object):
+class UIReview(object):
     def setupUi(self, Review):
         Review.setObjectName("Review")
         Review.resize(837, 531)
@@ -269,7 +269,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     Review = QtWidgets.QDialog()
-    ui = Ui_Review()
+    ui = UIReview()
     ui.setupUi(Review)
     Review.show()
     sys.exit(app.exec_())

@@ -13,7 +13,7 @@ from os.path import join as join_path
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_AddRemoveClan(object):
+class UIAddRemoveClan(object):
     def setupUi(self, AddRemoveClan):
         AddRemoveClan.setObjectName("AddRemoveClan")
         AddRemoveClan.resize(470, 225)
@@ -229,7 +229,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     AddRemoveClan = QtWidgets.QDialog()
-    ui = Ui_AddRemoveClan()
+    ui = UIAddRemoveClan()
     ui.setupUi(AddRemoveClan)
     AddRemoveClan.show()
     sys.exit(app.exec_())
