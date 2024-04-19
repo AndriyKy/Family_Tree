@@ -5,6 +5,7 @@ from uuid import uuid4
 from pyui import UIAddEdit
 
 from .constructor import WindowConstructor
+from .utils import fetch_image_path
 
 
 class AddEdit(WindowConstructor):
@@ -77,7 +78,7 @@ class AddEdit(WindowConstructor):
                 )
 
     def set_avatar(self) -> None:
-        image_path = self.fetch_image_path()
+        image_path = fetch_image_path()
         if image_path:
             clan_index = self.ui_window.comboBox_clan.currentIndex()
             worksheet = self.workbook[self.workbook.sheetnames[clan_index]]
