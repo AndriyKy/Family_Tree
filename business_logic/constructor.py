@@ -1,3 +1,4 @@
+from os.path import join as join_path
 from re import search
 from tkinter import messagebox as msbox
 from typing import Any
@@ -25,7 +26,7 @@ class WindowConstructor(QtWidgets.QDialog):
     Access spreadsheet column at index 0, record at index 1.
 
     Columns explained:
-    * A/0/1 - Image path
+    * A/0/1 - Image name
     * B/1/2 - * Person's ID
     * C/2/3 - Partner's ID
     * D/3/4 - Father's ID
@@ -103,7 +104,8 @@ class WindowConstructor(QtWidgets.QDialog):
             return True
         return False
 
-    def set_icon(self, image_path: str) -> None:
+    def set_icon(self, image_name: str) -> None:
+        image_path = join_path("avatars", image_name)
         image_size = Image.open(image_path).size
         fitted_size = fit_image_size(image_size)
         icon = QtGui.QIcon()

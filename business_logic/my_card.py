@@ -1,3 +1,4 @@
+from os.path import join as join_path
 from uuid import uuid4
 
 from PyQt5 import QtGui, QtWidgets
@@ -5,7 +6,7 @@ from PyQt5 import QtGui, QtWidgets
 from pyui import UIMyCard
 
 from .constructor import WindowConstructor
-from .utils import fetch_image_path
+from .utils import remove_image_if_exists, select_image
 
 
 class MyCard(WindowConstructor):
@@ -52,20 +53,21 @@ class MyCard(WindowConstructor):
             )
 
     def set_avatar(self) -> None:
-        image_path = fetch_image_path()
-        if image_path:
-            self.worksheet["A1"] = image_path
-            self.set_icon(image_path)
+        image_name = select_image()
+        if image_name:
+            remove_image_if_exists(self.worksheet["A1"].value)
+            self.worksheet["A1"] = image_name
+            self.set_icon(image_name)
 
     def set_my_card_button_label(self) -> None:
         self.pushButton_mainWindow.setText(
             f"Рід: {self.worksheet.title}\n"
             + f'{self.worksheet["H1"].value} {self.worksheet["G1"].value}'
         )
-        if image_path := self.worksheet["A1"].value:
+        if image_name := self.worksheet["A1"].value:
             icon1 = QtGui.QIcon()
             icon1.addPixmap(
-                QtGui.QPixmap(image_path),
+                QtGui.QPixmap(join_path("avatars", image_name)),
                 QtGui.QIcon.Normal,
                 QtGui.QIcon.Off,
             )
