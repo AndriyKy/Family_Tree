@@ -37,7 +37,7 @@ class AddEdit(WindowConstructor):
             self.ui_window.lineEdit_yearOfBirth.clear()
             self.ui_window.lineEdit_yearOfDeath.clear()
             self.ui_window.plainTextEdit_addinfo.clear()
-            self.set_icon(join_path("icons", "Add_image.png"))
+            self.set_icon(join_path("avatars", "Add_image.png"))
         else:
             clan_index = self.ui_window.comboBox_clan.currentIndex()
             sheet = self.workbook[self.workbook.sheetnames[clan_index]]
@@ -57,7 +57,9 @@ class AddEdit(WindowConstructor):
             self.ui_window.lineEdit_placeOfBirth.setText(row[11].value)
             self.ui_window.lineEdit_placeOfDeath.setText(row[12].value)
             self.ui_window.plainTextEdit_addinfo.setPlainText(row[13].value)
-            self.set_icon(row[0].value or join_path("icons", "Add_image.png"))
+            self.set_icon(
+                row[0].value or join_path("avatars", "Add_image.png")
+            )
 
     def fill_clans_and_members(self) -> None:
         clan_name = self.ui_window.comboBox_clan.currentText()
