@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets
 
 from business_logic import AddEdit, AddRemoveClan, FamilyTies, MyCard, Review
 from business_logic.constructor import WORKBOOK_NAME
-from windows import UIMainWindow
+from pyui import UIMainWindow
 
 
 def open() -> None:

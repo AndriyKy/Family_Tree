@@ -2,7 +2,7 @@ from uuid import uuid4
 
 from PyQt5 import QtGui, QtWidgets
 
-from windows import UIMyCard
+from pyui import UIMyCard
 
 from .constructor import WindowConstructor
 

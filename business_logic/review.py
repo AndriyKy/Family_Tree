@@ -2,7 +2,7 @@ from typing import Any
 
 from PyQt5 import QtWidgets
 
-from windows import UIReview
+from pyui import UIReview
 
 from .constructor import WindowConstructor
 

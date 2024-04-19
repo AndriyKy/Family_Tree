@@ -7,7 +7,7 @@ from openpyxl import load_workbook
 from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from windows import (
+from pyui import (
     UIAddEdit,
     UIAddRemoveClan,
     UIFamilyTies,

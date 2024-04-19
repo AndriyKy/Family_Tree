@@ -2,7 +2,7 @@ from os.path import join as join_path
 from typing import Any
 from uuid import uuid4
 
-from windows import UIAddEdit
+from pyui import UIAddEdit
 
 from .constructor import WindowConstructor
 

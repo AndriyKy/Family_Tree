@@ -1,7 +1,7 @@
 from re import search
 from tkinter import messagebox as msbox
 
-from windows import UIAddRemoveClan
+from pyui import UIAddRemoveClan
 
 from .constructor import WindowConstructor
 
