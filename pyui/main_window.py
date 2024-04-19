@@ -247,13 +247,13 @@ class UIMainWindow(object):
         self.pushButton_review.setIconSize(QtCore.QSize(20, 20))
         self.pushButton_review.setObjectName("pushButton_5")
         self.verticalLayout.addWidget(self.pushButton_review)
-        self.pushButton_6 = QtWidgets.QPushButton(self.verticalGroupBox)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(150, 35))
+        self.pushButton_graph = QtWidgets.QPushButton(self.verticalGroupBox)
+        self.pushButton_graph.setMinimumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("Segoe Print")
         font.setPointSize(10)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setStyleSheet(
+        self.pushButton_graph.setFont(font)
+        self.pushButton_graph.setStyleSheet(
             "QPushButton {\n"
             "    text-align: left;\n"
             "    background-color: none;\n"
@@ -280,10 +280,10 @@ class UIMainWindow(object):
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )
-        self.pushButton_6.setIcon(icon6)
-        self.pushButton_6.setIconSize(QtCore.QSize(20, 20))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.verticalLayout.addWidget(self.pushButton_6)
+        self.pushButton_graph.setIcon(icon6)
+        self.pushButton_graph.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton_graph.setObjectName("pushButton_6")
+        self.verticalLayout.addWidget(self.pushButton_graph)
         self.horizontalLayout.addWidget(self.verticalGroupBox)
         self.label_logo = QtWidgets.QLabel(self.centralwidget)
         self.label_logo.setStyleSheet("")
@@ -317,7 +317,7 @@ class UIMainWindow(object):
         self.pushButton_review.setText(
             _translate("MainWindow", "Переглянути ")
         )
-        self.pushButton_6.setText(_translate("MainWindow", "Діаграма"))
+        self.pushButton_graph.setText(_translate("MainWindow", "Дерево"))
 
 
 if __name__ == "__main__":

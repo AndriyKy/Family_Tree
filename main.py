@@ -3,7 +3,14 @@ import sys
 from openpyxl import Workbook, load_workbook
 from PyQt5 import QtWidgets
 
-from business_logic import AddEdit, AddRemoveClan, FamilyTies, MyCard, Review
+from business_logic import (
+    AddEdit,
+    AddRemoveClan,
+    FamilyTies,
+    Graph,
+    MyCard,
+    Review,
+)
 from business_logic.constructor import WORKBOOK_NAME
 from pyui import UIMainWindow
 
@@ -21,6 +28,7 @@ def open() -> None:
     add_edit = AddEdit()
     family_ties = FamilyTies()
     review = Review()
+    graph = Graph()
 
     # Register window opening events.
     ui_main_window.pushButton_myCard.clicked.connect(my_card.openEvent)
@@ -30,7 +38,7 @@ def open() -> None:
     ui_main_window.pushButton_addEdit.clicked.connect(add_edit.openEvent)
     ui_main_window.pushButton_familyTies.clicked.connect(family_ties.openEvent)
     ui_main_window.pushButton_review.clicked.connect(review.openEvent)
-
+    ui_main_window.pushButton_graph.clicked.connect(graph.openEvent)
     # Condition of pressing buttons / changing combo boxes.
     my_card.ui_window.image_Button.clicked.connect(my_card.set_avatar)
     my_card.ui_window.pushButton_done.clicked.connect(my_card.save)
