@@ -317,7 +317,7 @@ class UIMainWindow(object):
         self.pushButton_review.setText(
             _translate("MainWindow", "Переглянути ")
         )
-        self.pushButton_graph.setText(_translate("MainWindow", "Діаграма"))
+        self.pushButton_graph.setText(_translate("MainWindow", "Дерево"))
 
 
 if __name__ == "__main__":
