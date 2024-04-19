@@ -177,3 +177,5 @@ pyrightconfig.json
 
 *.xlsx
 Notes.md
+avatars/*
+!avatars/Add_image.png
