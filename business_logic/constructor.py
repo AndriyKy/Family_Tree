@@ -11,6 +11,7 @@ from pyui import (
     UIAddEdit,
     UIAddRemoveClan,
     UIFamilyTies,
+    UIGraph,
     UIMainWindow,
     UIMyCard,
     UIReview,
@@ -53,6 +54,7 @@ class WindowConstructor(QtWidgets.QDialog):
             | UIMainWindow
             | UIMyCard
             | UIReview
+            | UIGraph
         ],
         **kwargs: Any,
     ) -> None:
