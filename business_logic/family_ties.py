@@ -3,7 +3,7 @@ from typing import Any
 
 from PyQt5 import QtCore, QtWidgets
 
-from windows import UIFamilyTies
+from pyui import UIFamilyTies
 
 from .constructor import WindowConstructor
 

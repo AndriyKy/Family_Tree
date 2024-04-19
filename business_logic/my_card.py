@@ -2,9 +2,10 @@ from uuid import uuid4
 
 from PyQt5 import QtGui, QtWidgets
 
-from windows import UIMyCard
+from pyui import UIMyCard
 
 from .constructor import WindowConstructor
+from .utils import fetch_image_path
 
 
 class MyCard(WindowConstructor):
@@ -51,7 +52,7 @@ class MyCard(WindowConstructor):
             )
 
     def set_avatar(self) -> None:
-        image_path = self.fetch_image_path()
+        image_path = fetch_image_path()
         if image_path:
             self.worksheet["A1"] = image_path
             self.set_icon(image_path)

@@ -11,7 +11,7 @@ More screenshots are available [here](/screenshots/).
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-export PYTHONPATH="$(pwd):$(pwd)/windows:$(pwd)/business_logic"
+export PYTHONPATH="$(pwd):$(pwd)/pyui:$(pwd)/business_logic"
 pip install -r requirements.txt 
 ```
 

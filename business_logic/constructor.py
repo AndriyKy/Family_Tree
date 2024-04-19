@@ -1,5 +1,4 @@
 from re import search
-from tkinter import filedialog as fd
 from tkinter import messagebox as msbox
 from typing import Any
 
@@ -7,7 +6,7 @@ from openpyxl import load_workbook
 from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from windows import (
+from pyui import (
     UIAddEdit,
     UIAddRemoveClan,
     UIFamilyTies,
@@ -15,6 +14,8 @@ from windows import (
     UIMyCard,
     UIReview,
 )
+
+from .utils import fit_image_size
 
 WORKBOOK_NAME = "Family_lists.xlsx"
 
@@ -75,30 +76,6 @@ class WindowConstructor(QtWidgets.QDialog):
         self.close()
 
     @staticmethod
-    def resize_image(file_path) -> tuple[int, int]:
-        image = Image.open(file_path)
-        width, height = image.size
-        max_width = max_height = 175
-
-        if width > height:
-            max_height = (max_width * height) // width
-        elif width < height:
-            max_width = (max_height * width) // height
-
-        return max_width, max_height
-
-    def fetch_image_path(self) -> str | None:
-        return (
-            fd.askopenfilename(
-                filetypes=(
-                    ("JPEG image", ["*.jpeg", "*.jpg", "*.JPG"]),
-                    ("PNG image", "*.png"),
-                )
-            )
-            or None  # `askopenfilename` returns `()` if nothing is selected.
-        )
-
-    @staticmethod
     def is_input_valid(family_member: dict[str, str]) -> bool:
         if (
             not family_member["last_name"]
@@ -127,10 +104,11 @@ class WindowConstructor(QtWidgets.QDialog):
         return False
 
     def set_icon(self, image_path: str) -> None:
-        width, height = self.resize_image(image_path)
+        image_size = Image.open(image_path).size
+        fitted_size = fit_image_size(image_size)
         icon = QtGui.QIcon()
         icon.addPixmap(
             QtGui.QPixmap(image_path), QtGui.QIcon.Normal, QtGui.QIcon.Off
         )
         self.ui_window.image_Button.setIcon(icon)
-        self.ui_window.image_Button.setIconSize(QtCore.QSize(width, height))
+        self.ui_window.image_Button.setIconSize(QtCore.QSize(*fitted_size))
