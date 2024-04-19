@@ -62,7 +62,7 @@ class UIMyCard(object):
         )
         icon1 = QtGui.QIcon()
         icon1.addPixmap(
-            QtGui.QPixmap(join_path("icons", "Add_image.png")),
+            QtGui.QPixmap(join_path("avatars", "Add_image.png")),
             QtGui.QIcon.Normal,
             QtGui.QIcon.Off,
         )

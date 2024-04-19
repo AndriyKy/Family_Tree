@@ -1,11 +1,10 @@
-from os.path import join as join_path
 from typing import Any
 from uuid import uuid4
 
 from pyui import UIAddEdit
 
 from .constructor import WindowConstructor
-from .utils import fetch_image_path
+from .utils import remove_image_if_exists, select_image
 
 
 class AddEdit(WindowConstructor):
@@ -37,7 +36,7 @@ class AddEdit(WindowConstructor):
             self.ui_window.lineEdit_yearOfBirth.clear()
             self.ui_window.lineEdit_yearOfDeath.clear()
             self.ui_window.plainTextEdit_addinfo.clear()
-            self.set_icon(join_path("icons", "Add_image.png"))
+            self.set_icon("Add_image.png")
         else:
             clan_index = self.ui_window.comboBox_clan.currentIndex()
             sheet = self.workbook[self.workbook.sheetnames[clan_index]]
@@ -57,7 +56,7 @@ class AddEdit(WindowConstructor):
             self.ui_window.lineEdit_placeOfBirth.setText(row[11].value)
             self.ui_window.lineEdit_placeOfDeath.setText(row[12].value)
             self.ui_window.plainTextEdit_addinfo.setPlainText(row[13].value)
-            self.set_icon(row[0].value or join_path("icons", "Add_image.png"))
+            self.set_icon(row[0].value or "Add_image.png")
 
     def fill_clans_and_members(self) -> None:
         clan_name = self.ui_window.comboBox_clan.currentText()
@@ -78,8 +77,8 @@ class AddEdit(WindowConstructor):
                 )
 
     def set_avatar(self) -> None:
-        image_path = fetch_image_path()
-        if image_path:
+        image_name = select_image()
+        if image_name:
             clan_index = self.ui_window.comboBox_clan.currentIndex()
             worksheet = self.workbook[self.workbook.sheetnames[clan_index]]
             row_index = self.ui_window.comboBox_addEdit.currentIndex()
@@ -89,8 +88,9 @@ class AddEdit(WindowConstructor):
                     row_index = worksheet.max_row
                 else:
                     row_index = worksheet.max_row + 1
-            worksheet.cell(row_index, 1, image_path)
-            self.set_icon(image_path)
+            remove_image_if_exists(worksheet[row_index][0].value)
+            worksheet.cell(row_index, 1, image_name)
+            self.set_icon(image_name)
 
     def save(self) -> None:
         family_member = {  # Order matters.
