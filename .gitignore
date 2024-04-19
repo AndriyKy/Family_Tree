@@ -179,3 +179,4 @@ pyrightconfig.json
 Notes.md
 avatars/*
 !avatars/Add_image.png
+!avatars/Default_avatar.png
